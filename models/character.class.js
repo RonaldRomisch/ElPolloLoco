@@ -4,6 +4,7 @@ class Character extends MovableObject{
 
     height = 300;
     width = 150;
+    speed = 5;
     
     // Uncaught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement provided is in the 'broken' state.
     // the error came from false image source: 'img/2_character_pepe/2_walk7/W-23.png'
@@ -28,12 +29,23 @@ class Character extends MovableObject{
 
         setInterval(() => {
             if (this.world.keyboard.RIGHT) {
+                this.x += this.speed;
+            }
+            if (this.world.keyboard.LEFT) {
+                this.x -= this.speed;
+            }
+
+        }, 1000 / 60);
+
+        setInterval(() => {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                // walk animation
                 let i = this.currentImage % this.IMAGES_WALKING.length;
                 let path = this.IMAGES_WALKING[i];
                 this.img = this.imageCache[path];
                 this.currentImage++;
             }
-        }, 100);
+        }, 50);
         
     }
 
