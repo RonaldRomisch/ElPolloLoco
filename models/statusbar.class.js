@@ -1,4 +1,4 @@
-class Statusbar {
+class Statusbar extends DrawableObject {
 
     IMAGES_HEALTH = [
         'img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png',
@@ -12,7 +12,12 @@ class Statusbar {
     percentage = 100;
 
     constructor() {
+        super();
         this.loadImages(this.IMAGES_HEALTH);
+        this.x = 100;
+        this.y = 100;
+        this.setPercentage(100);
+        super();
     }
 
     setPercentage(percentage) {
@@ -36,12 +41,6 @@ class Statusbar {
             return 0;
         }
     }
-
-
-
-
-
-
 
 
 }
