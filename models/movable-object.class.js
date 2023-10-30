@@ -33,7 +33,7 @@ class MovableObject extends DrawableObject{
     }
 
     hit() {
-        this.energy -= 10;
+        this.energy -= 20;
         if(this.energy < 0) {
             this.energy = 0;
         } else {
@@ -56,15 +56,7 @@ class MovableObject extends DrawableObject{
         return this.y < 80;
     }
 
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
-            ctx.beginPath();
-            ctx.lineWidth = "5";
-            ctx.strokeStyle = "blue";
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
+    
 
     playAnimation(images) {
         let i = this.currentImage % images.length;
