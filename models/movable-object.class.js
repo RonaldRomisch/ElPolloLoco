@@ -21,7 +21,7 @@ class MovableObject extends DrawableObject{
         if (this instanceof ThrowableObject) { //Throwable objects should always fall
             return true
         } else {
-            return this.y < 80;
+            return this.y < 130;
         }
     }
     // character.isColliding(chicken);
@@ -40,7 +40,7 @@ class MovableObject extends DrawableObject{
     }
 
     hit() {
-        this.energy -= 20;
+        this.energy -= 10;
         if(this.energy < 0) {
             this.energy = 0;
         } else {
@@ -57,10 +57,6 @@ class MovableObject extends DrawableObject{
     isDead() {
         return this.energy == 0;
     }
-
-
-
-    
 
     playAnimation(images) {
         let i = this.currentImage % images.length;
