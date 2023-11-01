@@ -4,7 +4,7 @@ class Character extends MovableObject{
 
     height = 300;
     width = 150;
-    speed = 5;
+    speed = 15;
     
     // Uncaught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement provided is in the 'broken' state.
     // the error came from false image source: 'img/2_character_pepe/2_walk7/W-23.png'
@@ -67,7 +67,7 @@ class Character extends MovableObject{
                 this.otherDirection = false;
                 this.walking_sound.play();
             }
-            if (this.world.keyboard.LEFT && this.x > 0) {
+            if (this.world.keyboard.LEFT && this.x > -500) {
                 this.moveLeft();
                 this.otherDirection = true;
                 this.walking_sound.play();

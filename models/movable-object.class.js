@@ -58,6 +58,10 @@ class MovableObject extends DrawableObject{
         return this.energy == 0;
     }
 
+    earnCoin() {
+        this.collectedCoins += 1;
+    }
+
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];

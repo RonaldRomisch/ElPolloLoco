@@ -28,7 +28,32 @@ function initLevel() {
             new BackgroundObject('img/5_background/layers/air.png', 719 * 2, 400),
             new BackgroundObject('img/5_background/layers/3_third_layer/full.png', 719 * 2, 400),
             new BackgroundObject('img/5_background/layers/2_second_layer/full.png', 719 * 2, 140),
-            new BackgroundObject('img/5_background/layers/1_first_layer/full.png', 719 * 2, 120)
+            new BackgroundObject('img/5_background/layers/1_first_layer/full.png', 719 * 2, 120),
+            new BackgroundObject('img/5_background/layers/air.png', 719 * 3, 400),
+            new BackgroundObject('img/5_background/layers/3_third_layer/full.png', 719 * 3, 400),
+            new BackgroundObject('img/5_background/layers/2_second_layer/full.png', 719 * 3, 140),
+            new BackgroundObject('img/5_background/layers/1_first_layer/full.png', 719 * 3, 120),
+            new BackgroundObject('img/5_background/layers/air.png', 719 * 4, 400),
+            new BackgroundObject('img/5_background/layers/3_third_layer/full.png', 719 * 4, 400),
+            new BackgroundObject('img/5_background/layers/2_second_layer/full.png', 719 * 4, 140),
+            new BackgroundObject('img/5_background/layers/1_first_layer/full.png', 719 * 4, 120)
+        ],
+        [
+            new Collectable('coin', 300, 100),
+            new Collectable('coin', 350, 50),
+            new Collectable('coin', 400, 0),
+            new Collectable('coin', 450, 50),
+            new Collectable('coin', 500, 100),
+            new Collectable('coin', 550, 50),
+            new Collectable('coin', 600, 0),
+            new Collectable('coin', 650, 50),
+            new Collectable('coin', 700, 100),
+            new Collectable('coin', -400, 50)
+        ],
+        [
+            new Collectable('bottle', 200, 330),
+            new Collectable('bottle', 400, 335),
+            new Collectable('bottle', -400, 340)
         ]
     );
 }
