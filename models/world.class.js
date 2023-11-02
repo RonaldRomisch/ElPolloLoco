@@ -5,9 +5,8 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    statusBarHealth = new StatusBar();
+    statusBarHealth = new StatusBar('health');
     throwableObjects = [];
-    collectedCoins = 0;
 
 
     constructor(canvas, keyboard) {
@@ -46,7 +45,7 @@ class World {
         })
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
-                
+                this.character.earnCoin();
             }
         });
     }

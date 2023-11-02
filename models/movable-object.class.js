@@ -6,6 +6,8 @@ class MovableObject extends DrawableObject{
     acceleration = 2;
     energy = 100;
     lastHit = 0;
+    collectedCoins = 0;
+    EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
     
     applyGravity() {
         setInterval(() => {
@@ -60,6 +62,8 @@ class MovableObject extends DrawableObject{
 
     earnCoin() {
         this.collectedCoins += 1;
+        this.EARN_COIN_SOUND.play();
+        console.log(this.collectedCoins);
     }
 
     playAnimation(images) {
