@@ -6,6 +6,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBarHealth = new StatusBar('health');
+    statusBarThrowObject = new StatusBar('throw-objects');
     throwableObjects = [];
 
 
@@ -61,6 +62,10 @@ class World {
         this.addToMap(this.statusBarHealth);
         this.ctx.translate(this.camera_x, 0);
 
+        this.ctx.translate(-this.camera_x, 0); 
+        // -------- Space for fixed object
+        this.addToMap(this.statusBarThrowObject);
+        this.ctx.translate(this.camera_x, 0);
         
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);

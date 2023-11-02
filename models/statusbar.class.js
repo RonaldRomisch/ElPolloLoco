@@ -23,7 +23,6 @@ class StatusBar extends DrawableObject {
 
     constructor(input) {
         super();
-        this.x = 30;
         this.width = 200;
         this.height = 70;
         if ('health' == input) {
@@ -36,24 +35,26 @@ class StatusBar extends DrawableObject {
     healthStatusBar() {
         this.loadImages(this.IMAGES_HEALTH);
         this.setPercentage(100);
-        this.y = 0;
+        this.x = 30;
+        this.y = -10;
     }
 
     throwStatusBar() {
         this.loadImages(this.IMAGES_THROW_OBJECTS);
         this.setThrowObjects(0);
-        this.y = 100;
+        this.x = 10;
+        this.y = 30;
     }
 
     setPercentage(percentage) {
         this.percentage = percentage;
-        let path = this.IMAGES_THROW_OBJECTS[this.resolveImageIndexHealth()];
+        let path = this.IMAGES_HEALTH[this.resolveImageIndexHealth()];
         this.img = this.imageCache[path];
     }
 
     setThrowObjects(numberThrowObjects) {
         this.numberThrowObjects = numberThrowObjects;
-        let path = this.IMAGES_HEALTH[this.resolveImageIndexThrowObjects()];
+        let path = this.IMAGES_THROW_OBJECTS[this.resolveImageIndexThrowObjects()];
         this.img = this.imageCache[path];
     }
 
