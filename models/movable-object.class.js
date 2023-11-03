@@ -62,6 +62,7 @@ class MovableObject extends DrawableObject{
 
     earnCoin() {
         this.collectedCoins += 1;
+        this.collectedCoins = this.collectedCoins % 11;
         this.EARN_COIN_SOUND.play();
         console.log(this.collectedCoins);
     }

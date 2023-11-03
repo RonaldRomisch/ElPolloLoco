@@ -7,6 +7,7 @@ class World {
     camera_x = 0;
     statusBarHealth = new StatusBar('health');
     statusBarThrowObject = new StatusBar('throw-objects');
+    statusBarCollectedCoins = new StatusBar('coins');
     throwableObjects = [];
 
 
@@ -47,6 +48,7 @@ class World {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
                 this.character.earnCoin();
+                this.statusBarCollectedCoins.setCollectedCoins(this.character.collectedCoins)
             }
         });
     }
@@ -61,10 +63,11 @@ class World {
         // -------- Space for fixed object
         this.addToMap(this.statusBarHealth);
         this.ctx.translate(this.camera_x, 0);
-
         this.ctx.translate(-this.camera_x, 0); 
-        // -------- Space for fixed object
         this.addToMap(this.statusBarThrowObject);
+        this.ctx.translate(this.camera_x, 0);
+        this.ctx.translate(-this.camera_x, 0); 
+        this.addToMap(this.statusBarCollectedCoins);
         this.ctx.translate(this.camera_x, 0);
         
         this.addObjectsToMap(this.level.coins);

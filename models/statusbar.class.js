@@ -1,12 +1,12 @@
 class StatusBar extends DrawableObject {
 
     IMAGES_HEALTH = [
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/20.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/40.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/60.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/80.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/blue/100.png'
+        'img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/green/60.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png',
+        'img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png'
     ]; 
 
     IMAGES_THROW_OBJECTS = [
@@ -18,8 +18,18 @@ class StatusBar extends DrawableObject {
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png'
     ]; 
 
+    IMAGES_COINS = [
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/40.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/60.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/80.png',
+        'img/7_statusbars/1_statusbar/1_statusbar_coin/blue/100.png'
+    ]; 
+
     percentage = 100;
     numberThrowObjects = 0;
+    coinsCollected = 0;
 
     constructor(input) {
         super();
@@ -29,21 +39,30 @@ class StatusBar extends DrawableObject {
             this.healthStatusBar();
         } else if (input == 'throw-objects') {
             this.throwStatusBar();
+        } else if (input == 'coins') {
+            this.coinStatusBar();
         }
     }
 
     healthStatusBar() {
         this.loadImages(this.IMAGES_HEALTH);
         this.setPercentage(100);
-        this.x = 30;
+        this.x = 40;
         this.y = -10;
     }
 
     throwStatusBar() {
         this.loadImages(this.IMAGES_THROW_OBJECTS);
         this.setThrowObjects(0);
-        this.x = 10;
+        this.x = 20;
         this.y = 30;
+    }
+
+    coinStatusBar() {
+        this.loadImages(this.IMAGES_COINS);
+        this.setCollectedCoins(0);
+        this.x = 0;
+        this.y = 70;
     }
 
     setPercentage(percentage) {
@@ -55,6 +74,12 @@ class StatusBar extends DrawableObject {
     setThrowObjects(numberThrowObjects) {
         this.numberThrowObjects = numberThrowObjects;
         let path = this.IMAGES_THROW_OBJECTS[this.resolveImageIndexThrowObjects()];
+        this.img = this.imageCache[path];
+    }
+
+    setCollectedCoins(coinsCollected) {
+        this.coinsCollected = coinsCollected;
+        let path = this.IMAGES_COINS[this.resolveImageIndexCoins()];
         this.img = this.imageCache[path];
     }
 
@@ -84,6 +109,22 @@ class StatusBar extends DrawableObject {
         }else if (this.numberThrowObjects > 4) {
             return 2;
         }else if (this.numberThrowObjects > 2) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
+    resolveImageIndexCoins() {
+        if (this.coinsCollected == 10) {
+            return 5;
+        } else if (this.coinsCollected > 8) {
+            return 4;
+        }else if (this.coinsCollected > 6) {
+            return 3;
+        }else if (this.coinsCollected > 4) {
+            return 2;
+        }else if (this.coinsCollected > 2) {
             return 1;
         }else {
             return 0;
