@@ -29,7 +29,7 @@ class StatusBar extends DrawableObject {
 
     percentage = 100;
     numberThrowObjects = 0;
-    coinsCollected = 0;
+    coinsCollectedStatusBar = 0;
 
     constructor(input) {
         super();
@@ -77,8 +77,8 @@ class StatusBar extends DrawableObject {
         this.img = this.imageCache[path];
     }
 
-    setCollectedCoins(coinsCollected) {
-        this.coinsCollected = coinsCollected;
+    setCollectedCoins(coinsCollectedStatusBar) {
+        this.coinsCollectedStatusBar = coinsCollectedStatusBar;
         let path = this.IMAGES_COINS[this.resolveImageIndexCoins()];
         this.img = this.imageCache[path];
     }
@@ -116,15 +116,15 @@ class StatusBar extends DrawableObject {
     }
 
     resolveImageIndexCoins() {
-        if (this.coinsCollected == 10) {
+        if (this.coinsCollectedStatusBar == 10) {
             return 5;
-        } else if (this.coinsCollected > 8) {
+        } else if (this.coinsCollectedStatusBar > 7) {
             return 4;
-        }else if (this.coinsCollected > 6) {
+        }else if (this.coinsCollectedStatusBar > 5) {
             return 3;
-        }else if (this.coinsCollected > 4) {
+        }else if (this.coinsCollectedStatusBar > 3) {
             return 2;
-        }else if (this.coinsCollected > 2) {
+        }else if (this.coinsCollectedStatusBar > 1) {
             return 1;
         }else {
             return 0;

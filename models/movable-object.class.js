@@ -7,6 +7,7 @@ class MovableObject extends DrawableObject{
     energy = 100;
     lastHit = 0;
     collectedCoins = 0;
+    throwableObjectsInventar = 0;
     EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
     
     applyGravity() {
@@ -62,9 +63,12 @@ class MovableObject extends DrawableObject{
 
     earnCoin() {
         this.collectedCoins += 1;
-        this.collectedCoins = this.collectedCoins % 11;
         this.EARN_COIN_SOUND.play();
         console.log(this.collectedCoins);
+    }
+
+    fillThrowableObjectInventar() {
+        this.throwableObjectsInventar += 10;
     }
 
     playAnimation(images) {

@@ -35,6 +35,8 @@ class World {
         if (this.keyboard.D) {
             let bottle = new ThrowableObject(this.character.x, this.character.y);
             this.throwableObjects.push(bottle);
+            this.character.throwableObjectsInventar -= 1;
+            console.log(this.character.throwableObjectsInventar);
         }
     }
 
@@ -45,12 +47,27 @@ class World {
                 this.statusBarHealth.setPercentage(this.character.energy);
             };
         })
-        this.level.coins.forEach((coin) => {
+        for (let i = 0; i < this.level.coins.length; i++) {
+            if (this.character.isColliding(this.level.coins[i])) {
+                this.character.earnCoin();
+                this.statusBarCollectedCoins.setCollectedCoins(this.character.collectedCoins);
+                this.level.coins.splice(i, 1);
+            }
+        }
+        for (let i = 0; i < this.level.bottles.length; i++) {
+            if (this.character.isColliding(this.level.bottles[i])) {
+                this.character.fillThrowableObjectInventar();
+                this.statusBarCollectedCoins.setThrowObjects(this.character.throwableObjectsInventar);
+                this.level.bottles.splice(i, 1);
+            }
+        }
+        /* this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
                 this.character.earnCoin();
-                this.statusBarCollectedCoins.setCollectedCoins(this.character.collectedCoins)
+                this.statusBarCollectedCoins.setCollectedCoins(this.character.collectedCoins);
+                this.level.coins.splice(coin, 1);
             }
-        });
+        }); */
     }
 
     draw() {
