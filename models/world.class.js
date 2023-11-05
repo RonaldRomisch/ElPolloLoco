@@ -28,7 +28,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-        }, 200);
+        }, 100);
     }
 
     checkThrowObjects() {
@@ -45,6 +45,7 @@ class World {
         //damage
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
+                console.log(true, 'enemy');
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
             };
@@ -52,6 +53,7 @@ class World {
         //Collect coins
         for (let i = 0; i < this.level.coins.length; i++) {
             if (this.character.isColliding(this.level.coins[i])) {
+                console.log(true, 'coin');
                 this.character.earnCoin();
                 this.statusBarCollectedCoins.setCollectedCoins(this.character.collectedCoins);
                 this.level.coins.splice(i, 1);
@@ -60,6 +62,7 @@ class World {
         //Collect bottles
         for (let i = 0; i < this.level.bottles.length; i++) {
             if (this.character.isColliding(this.level.bottles[i])) {
+                console.log(true, 'bottle');
                 this.character.fillThrowableObjectInventar();
                 this.statusBarThrowObject.setThrowObjects(this.character.throwableObjectsInventar);
                 this.level.bottles.splice(i, 1);

@@ -39,9 +39,9 @@ function initLevel() {
             new BackgroundObject('img/5_background/layers/1_first_layer/full.png', 719 * 4, 120)
         ],
         [
-            new Collectable('coin', 300, 100),
-            new Collectable('coin', 350, 50),
-            new Collectable('coin', 400, 0),
+            new Collectable('coin', 300, 230),
+            new Collectable('coin', 350, 250),
+            new Collectable('coin', 400, 180),
             new Collectable('coin', 450, 50),
             new Collectable('coin', 500, 100),
             new Collectable('coin', 550, 50),
