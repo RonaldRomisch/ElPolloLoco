@@ -100,15 +100,15 @@ class StatusBar extends DrawableObject {
     }
 
     resolveImageIndexThrowObjects() {
-        if (this.numberThrowObjects == 10) {
+        if (this.numberThrowObjects >= 10) {
             return 5;
-        } else if (this.numberThrowObjects > 8) {
+        } else if (this.numberThrowObjects > 7) {
             return 4;
-        }else if (this.numberThrowObjects > 6) {
+        }else if (this.numberThrowObjects > 5) {
             return 3;
-        }else if (this.numberThrowObjects > 4) {
-            return 2;
         }else if (this.numberThrowObjects > 2) {
+            return 2;
+        }else if (this.numberThrowObjects > 0) {
             return 1;
         }else {
             return 0;
@@ -118,13 +118,13 @@ class StatusBar extends DrawableObject {
     resolveImageIndexCoins() {
         if (this.coinsCollectedStatusBar == 10) {
             return 5;
-        } else if (this.coinsCollectedStatusBar > 7) {
+        } else if (this.coinsCollectedStatusBar > 6) {
             return 4;
-        }else if (this.coinsCollectedStatusBar > 5) {
+        }else if (this.coinsCollectedStatusBar > 4) {
             return 3;
-        }else if (this.coinsCollectedStatusBar > 3) {
+        }else if (this.coinsCollectedStatusBar > 2) {
             return 2;
-        }else if (this.coinsCollectedStatusBar > 1) {
+        }else if (this.coinsCollectedStatusBar > 0) {
             return 1;
         }else {
             return 0;

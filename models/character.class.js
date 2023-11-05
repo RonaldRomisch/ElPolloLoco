@@ -5,6 +5,13 @@ class Character extends MovableObject{
     height = 300;
     width = 150;
     speed = 15;
+
+    offset = {
+        top: 130,
+        bottom: -145,
+        left: 40,
+        right: -75
+    }
     
     // Uncaught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement provided is in the 'broken' state.
     // the error came from false image source: 'img/2_character_pepe/2_walk7/W-23.png'
