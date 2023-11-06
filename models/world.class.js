@@ -53,7 +53,6 @@ class World {
         //Collect coins
         for (let i = 0; i < this.level.coins.length; i++) {
             if (this.character.isColliding(this.level.coins[i])) {
-                console.log(true, 'coin');
                 this.character.earnCoin();
                 this.statusBarCollectedCoins.setCollectedCoins(this.character.collectedCoins);
                 this.level.coins.splice(i, 1);

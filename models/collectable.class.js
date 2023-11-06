@@ -3,9 +3,9 @@ class Collectable extends DrawableObject {
 
     offset = {
         top: 35,
-        bottom: -70,
+        bottom: 70,
         left: 35,
-        right: -70
+        right: 70
     }
 
     IMAGE_COIN = [
