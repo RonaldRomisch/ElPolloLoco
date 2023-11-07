@@ -46,6 +46,7 @@ class MovableObject extends DrawableObject{
             console.log(this.x + this.offset.left , mo.x + mo.width - mo.offset.right);
             console.log(this.y + this.offset.top , mo.y + mo.height - mo.offset.bottom);
             console.log(mo);
+            console.log(this);
         }
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
             this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&

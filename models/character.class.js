@@ -1,6 +1,7 @@
 class Character extends MovableObject{
     
     y = -50;
+    x = 50;
 
     height = 300;
     width = 150;
@@ -14,10 +15,10 @@ class Character extends MovableObject{
     } */
 
     offset = {
-        top: 130,
-        bottom: 145,
+        top: 120,
+        bottom: 10,
         left: 40,
-        right: 75
+        right: 40
     }
     
     // Uncaught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement provided is in the 'broken' state.

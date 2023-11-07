@@ -40,7 +40,7 @@ function initLevel() {
         ],
         [
             new Collectable('coin', 300, 250),
-            new Collectable('coin', 350, 200),
+            new Collectable('coin', 350, 250),
             new Collectable('coin', 400, 200),
             new Collectable('coin', 450, 50),
             new Collectable('coin', 500, 100),
