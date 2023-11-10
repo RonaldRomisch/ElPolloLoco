@@ -37,17 +37,6 @@ class MovableObject extends DrawableObject{
     } */
 
     isColliding(mo) {
-        if (this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom) {
-            console.log(this.x + this.width - this.offset.right, mo.x + mo.offset.left);
-            console.log(this.y + this.height - this.offset.bottom, mo.y + mo.offset.top);
-            console.log(this.x + this.offset.left , mo.x + mo.width - mo.offset.right);
-            console.log(this.y + this.offset.top , mo.y + mo.height - mo.offset.bottom);
-            console.log(mo);
-            console.log(this);
-        }
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
             this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
             this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
@@ -76,11 +65,10 @@ class MovableObject extends DrawableObject{
     earnCoin() {
         this.collectedCoins += 1;
         this.EARN_COIN_SOUND.play();
-        console.log(this.collectedCoins);
     }
 
     fillThrowableObjectInventar() {
-        this.throwableObjectsInventar += 10;
+        this.throwableObjectsInventar = 10;
     }
 
     playAnimation(images) {
