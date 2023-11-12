@@ -37,19 +37,26 @@ class World {
             this.throwableObjects.push(bottle);
             this.character.throwableObjectsInventar -= 1;
             this.statusBarThrowObject.setThrowObjects(this.character.throwableObjectsInventar);
-            console.log(this.character.throwableObjectsInventar);
+            console.log(this.throwableObjects);
         }
     }
 
     checkCollisions() {
-        //damage
+        //damage character
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
-                console.log(true, 'enemy');
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
-            };
+            }
         })
+        // bottle damage
+        for (let i = 0; i < this.level.enemies.length; i++) {
+            for (let j = 0; j < this.throwableObjects.length; j++) {
+                if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
+                    this.level.enemies.splice(i, 1);
+                }
+            }
+        }
         //Collect coins
         for (let i = 0; i < this.level.coins.length; i++) {
             if (this.character.isColliding(this.level.coins[i])) {
