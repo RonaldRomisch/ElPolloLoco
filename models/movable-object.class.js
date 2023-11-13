@@ -9,6 +9,7 @@ class MovableObject extends DrawableObject{
     collectedCoins = 0;
     throwableObjectsInventar = 0;
     EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
+    isDeadChicken = false;
     
     applyGravity() {
         setInterval(() => {
@@ -27,14 +28,6 @@ class MovableObject extends DrawableObject{
             return this.y < 130;
         }
     }
-    // character.isColliding(chicken);
-    /* isColliding (obj) {
-        return  this.x + this.width + this.offset.right >= obj.x + obj.offset.left && 
-            this.x +  this.offset.left <= obj.x + obj.width + obj.offset.right && 
-            this.y + this.offset.bottom + this.height >= obj.y + obj.offset.top &&
-            this.y + this.offset.top <= obj.y + obj.height + obj.offset.bottom && 
-            obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
-    } */
 
     isColliding(mo) {
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
@@ -62,6 +55,10 @@ class MovableObject extends DrawableObject{
         return this.energy == 0;
     }
 
+    isDeadChicken() {
+        return true;
+    }
+
     earnCoin() {
         this.collectedCoins += 1;
         this.EARN_COIN_SOUND.play();
@@ -76,6 +73,11 @@ class MovableObject extends DrawableObject{
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+    playImage(image) {
+        let path = image[0];
+        this.img = this.imageCache[path];
     }
 
     moveRight () {

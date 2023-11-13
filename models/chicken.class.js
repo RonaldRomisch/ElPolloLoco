@@ -28,7 +28,6 @@ class Chicken extends MovableObject {
 
         this.animate();
     }
-
     
     animate() {
         setInterval(() => {
@@ -39,21 +38,10 @@ class Chicken extends MovableObject {
             this.playAnimation(this.IMAGES_WALKING);
         }, 300);
 
-        /* setInterval(() => {
-
-            if (this.isEnemyDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-            } else if(this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT);
-            } else if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING)
-            } else{
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                    // walk animation
-                    this.playAnimation(this.IMAGES_WALKING);
-                }
-            }
-        }, 50); */
-
+        if(this.isDeadChicken){
+            setTimeout(() => {
+                this.playImage(this.IMAGE_DEAD);
+            }, 1000);
+        }
     }
 }

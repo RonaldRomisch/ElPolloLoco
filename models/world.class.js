@@ -53,7 +53,7 @@ class World {
         for (let i = 0; i < this.level.enemies.length; i++) {
             for (let j = 0; j < this.throwableObjects.length; j++) {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
-                    this.level.enemies.splice(i, 1);
+                    this.enemyDead(i, this.level.enemies);
                 }
             }
         }
@@ -68,7 +68,6 @@ class World {
         //Collect bottles
         for (let i = 0; i < this.level.bottles.length; i++) {
             if (this.character.isColliding(this.level.bottles[i])) {
-                console.log(true, 'bottle');
                 this.character.fillThrowableObjectInventar();
                 this.statusBarThrowObject.setThrowObjects(this.character.throwableObjectsInventar);
                 this.level.bottles.splice(i, 1);
