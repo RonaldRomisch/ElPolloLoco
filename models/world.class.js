@@ -9,7 +9,6 @@ class World {
     statusBarThrowObject = new StatusBar('throw-objects');
     statusBarCollectedCoins = new StatusBar('coins');
     throwableObjects = [];
-    jumpOnEnemy = true;
 
 
     constructor(canvas, keyboard) {
@@ -28,11 +27,13 @@ class World {
     run() {
         setInterval(() => {
             this.checkEnemyCollisions();
-            this.checkThrowObjects();
             this.checkthrowableObjectCollision();
             this.checkCoinCollision();
             this.checkBottleCollisions();
-        }, 100);
+        }, 25);
+        setInterval(() => {
+            this.checkThrowObjects();
+        }, 200);
     }
 
     checkThrowObjects() {
@@ -48,8 +49,9 @@ class World {
     checkEnemyCollisions() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
-                if (this.character.isAboveGround() && !(enemy instanceof Endboss) && this.character.speedY < 0) {
+                if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
                     this.character.jump();
+                    setTimeout(console.log('wtf'), 1000);
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);
@@ -61,8 +63,11 @@ class World {
     checkthrowableObjectCollision() {
         for (let i = 0; i < this.level.enemies.length; i++) {
             for (let j = 0; j < this.throwableObjects.length; j++) {
-                if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
+                if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && !(this.level.enemies[i] instanceof Endboss)) {
                     this.removeObjectFromScreen(this.level.enemies, i);
+                }
+                if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && this.level.enemies[i] instanceof Endboss) {
+                    console.log('Endboss gets damage');
                 }
             }
         }

@@ -9,7 +9,6 @@ class MovableObject extends DrawableObject{
     collectedCoins = 0;
     throwableObjectsInventar = 0;
     EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
-    isDeadChicken = false;
     
     applyGravity() {
         setInterval(() => {
@@ -61,10 +60,6 @@ class MovableObject extends DrawableObject{
 
     isDead() {
         return this.energy == 0;
-    }
-
-    isDeadChicken() {
-        return true;
     }
 
     earnCoin() {
