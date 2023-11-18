@@ -8,6 +8,7 @@ class World {
     statusBarHealth = new StatusBar('health');
     statusBarThrowObject = new StatusBar('throw-objects');
     statusBarCollectedCoins = new StatusBar('coins');
+    statusBarEndbossHealth = new StatusBar('endboss');
     throwableObjects = [];
 
 
@@ -67,7 +68,9 @@ class World {
                     this.removeObjectFromScreen(this.level.enemies, i);
                 }
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && this.level.enemies[i] instanceof Endboss) {
-                    console.log('Endboss gets damage');
+                    this.level.enemies[i].hitEndboss();
+                    this.statusBarEndbossHealth.setPercentageEndboss(this.level.enemies[i].healthEndboss);
+                    console.log(this.level.enemies[i].healthEndboss);
                 }
             }
         }
@@ -102,7 +105,7 @@ class World {
 
         this.ctx.translate(this.camera_x, 0); // Verschiebung der Kamera nach links
         this.addObjectsToMap(this.level.backgroundObjects);
-
+        
         this.ctx.translate(-this.camera_x, 0); 
         // -------- Space for fixed object
         this.addToMap(this.statusBarHealth);
@@ -113,6 +116,12 @@ class World {
         this.ctx.translate(-this.camera_x, 0); 
         this.addToMap(this.statusBarCollectedCoins);
         this.ctx.translate(this.camera_x, 0);
+
+        if (this.character.x > 2340) {
+            this.ctx.translate(-this.camera_x, 0); 
+            this.addToMap(this.statusBarEndbossHealth);
+            this.ctx.translate(this.camera_x, 0);
+        }
         
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);

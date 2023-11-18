@@ -6,6 +6,8 @@ class MovableObject extends DrawableObject{
     acceleration = 2;
     energy = 100;
     lastHit = 0;
+    healthEndboss = 100;
+    lastHitEndboss = 0;
     collectedCoins = 0;
     throwableObjectsInventar = 0;
     EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
@@ -35,14 +37,6 @@ class MovableObject extends DrawableObject{
             this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     }
 
-    enemyColliding(mo) {
-        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
-            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
-            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
-            this.y + this.height - this.offset.bottom + 3 < mo.y + mo.height - mo.offset.bottom &&
-            this.speedY < 0;
-    }
-
     hit() {
         this.energy -= 10;
         if(this.energy < 0) {
@@ -60,6 +54,21 @@ class MovableObject extends DrawableObject{
 
     isDead() {
         return this.energy == 0;
+    }
+
+    hitEndboss() {
+        this.healthEndboss -= 10;
+        if(this.healthEndboss < 0) {
+            this.healthEndboss = 0;
+        } else {
+            this.lastHitEndboss = new Date().getTime();
+        }
+    }
+
+    endbossIsHurt() {
+        let timePassed = new Date().getTime() - this.lastHitEndboss; // difference in ms
+        timePassed = timePassed / 1000;
+        return timePassed < 1;
     }
 
     earnCoin() {

@@ -49,7 +49,7 @@ class StatusBar extends DrawableObject {
         } else if (input == 'coins') {
             this.coinStatusBar();
         } else if (input == 'endboss') {
-
+            this.healthEndbossStatusBar();
         }
     }
 
@@ -143,29 +143,29 @@ class StatusBar extends DrawableObject {
     healthEndbossStatusBar() {
         this.loadImages(this.IMAGES_ENDBOSS);
         this.setPercentageEndboss(100);
-        this.x = 40;
-        this.y = -10;
+        this.x = 310;
+        this.y = 410;
     }
 
-    setPercentageEndboss(percentage) {
-        this.percentage = percentage;
+    setPercentageEndboss(percentageEndboss) {
+        this.percentageEndboss = percentageEndboss;
         let path = this.IMAGES_ENDBOSS[this.resolveImageIndexHealthEndboss()];
         this.img = this.imageCache[path];
     }
 
     resolveImageIndexHealthEndboss() {
         if (this.percentage == 100) {
-            return 5;
-        } else if (this.percentage > 80) {
-            return 4;
-        }else if (this.percentage > 60) {
-            return 3;
-        }else if (this.percentage > 40) {
-            return 2;
-        }else if (this.percentage > 20) {
-            return 1;
-        }else {
             return 0;
+        } else if (this.percentageEndboss > 80) {
+            this.width = 150;
+        }else if (this.percentageEndboss > 60) {
+            this.width = 110;
+        }else if (this.percentageEndboss > 40) {
+            this.width = 70;
+        }else if (this.percentageEndboss > 20) {
+            this.width = 30;
+        }else {
+            this.width = 0;
         }
     }
 }
