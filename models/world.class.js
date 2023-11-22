@@ -52,7 +52,7 @@ class World {
             if(this.character.isColliding(enemy)) {
                 if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
                     this.character.jump();
-                    setTimeout(console.log('wtf'), 1000);
+                    setTimeout(console.log('wtf'), 100);
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);

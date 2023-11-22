@@ -154,16 +154,12 @@ class StatusBar extends DrawableObject {
     }
 
     resolveImageIndexHealthEndboss() {
-        if (this.percentage == 100) {
+        if (this.percentageEndboss == 100) {
             return 0;
-        } else if (this.percentageEndboss > 80) {
-            this.width = 150;
-        }else if (this.percentageEndboss > 60) {
-            this.width = 110;
-        }else if (this.percentageEndboss > 40) {
-            this.width = 70;
-        }else if (this.percentageEndboss > 20) {
-            this.width = 30;
+        } else if (this.percentageEndboss > 50) {
+            return 1;
+        }else if (this.percentageEndboss > 0) {
+            return 2;
         }else {
             this.width = 0;
         }

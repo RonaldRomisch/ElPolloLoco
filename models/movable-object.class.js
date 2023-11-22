@@ -68,7 +68,7 @@ class MovableObject extends DrawableObject{
     endbossIsHurt() {
         let timePassed = new Date().getTime() - this.lastHitEndboss; // difference in ms
         timePassed = timePassed / 1000;
-        return timePassed < 1;
+        return timePassed < 2;
     }
 
     earnCoin() {
