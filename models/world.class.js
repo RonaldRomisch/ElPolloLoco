@@ -65,7 +65,10 @@ class World {
         for (let i = 0; i < this.level.enemies.length; i++) {
             for (let j = 0; j < this.throwableObjects.length; j++) {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && !(this.level.enemies[i] instanceof Endboss)) {
-                    this.removeObjectFromScreen(this.level.enemies, i);
+                    this.level.enemies[i]['dead'] = true;
+                    setTimeout(() => {
+                        this.removeObjectFromScreen(this.level.enemies, i);
+                    }, 2000);
                 }
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && this.level.enemies[i] instanceof Endboss) {
                     this.level.enemies[i].hitEndboss();
@@ -91,7 +94,7 @@ class World {
             if (this.character.isColliding(this.level.bottles[i])) {
                 this.character.fillThrowableObjectInventar();
                 this.statusBarThrowObject.setThrowObjects(this.character.throwableObjectsInventar);
-                this.removeObjectFromScreen(this.level.bottles, i)
+                this.removeObjectFromScreen(this.level.bottles, i);
             }
         }
     }
