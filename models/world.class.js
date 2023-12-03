@@ -62,11 +62,12 @@ class World {
     }
 
     checkthrowableObjectCollision() {
-        for (let i = 0; i < this.level.enemies.length; i++) {
+        for (let i = this.level.enemies.length - 1; i >= 0; i--) {
             for (let j = 0; j < this.throwableObjects.length; j++) {
-                if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && !(this.level.enemies[i] instanceof Endboss)) {
+                if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && this.level.enemies[i] instanceof Chicken) {
                     this.level.enemies[i]['dead'] = true;
                     setTimeout(() => {
+                        console.log("point");
                         this.removeObjectFromScreen(this.level.enemies, i);
                     }, 2000);
                 }
