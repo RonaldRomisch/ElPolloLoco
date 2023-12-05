@@ -2,7 +2,7 @@ class Chicken extends MovableObject {
     y = 350;
     height = 80;
 
-    intervalIds = [];
+    intervalChickenIds = [];
 
     offset = {
         top: 0,
@@ -31,11 +31,6 @@ class Chicken extends MovableObject {
 
         this.animate();
     }
-
-    //dead chicken animation
-    deadChicken() {
-        
-    }
     
     animate() {
         setInterval(() => {
@@ -50,12 +45,12 @@ class Chicken extends MovableObject {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 300);
-        this.intervalIds.push(intervalChicken);
+        this.intervalChickenIds.push(intervalChicken);
         
     }
     theChickenIsDead() {
         console.log('chicken is dead');
-        clearInterval(this.intervalIds[0]);
+        clearInterval(this.intervalChickenIds[0]);
     }
     
 }
