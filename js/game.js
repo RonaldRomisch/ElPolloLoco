@@ -3,7 +3,14 @@ let ctx;
 let world;
 let keyboard = new Keyboard();
 
+function getHTMLCanvas() {
+    document.getElementById('start-screen').innerHTML = `
+        <canvas id="canvas" width="720" height="480"></canvas>
+    `;
+}
+
 function init() {
+    getHTMLCanvas();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 

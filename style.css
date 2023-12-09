@@ -38,3 +38,34 @@ canvas {
     font-family: 'zabras';
     src: url('fonts/zabars.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 } 
+
+.screen-image {
+    width: 720px;
+    height: 480px;
+    background-image: url('img/9_intro_outro_screens/start/startscreen_1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.start-button {
+    text-align: center;
+    font-size: 52px;
+    background-color: rgb(255,207,46);
+    width: 100px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.start-button:hover {
+    background-color: rgb(255,146,71);
+}
+
+@media (max-width: 750px) {
+    .screen-image {
+        width: 400px;
+    }
+}
