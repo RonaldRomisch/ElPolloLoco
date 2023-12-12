@@ -28,6 +28,7 @@ class World {
     run() {
         setInterval(() => {
             this.checkEnemyCollisions();
+            this.checkEndbossCollisions();
             this.checkthrowableObjectCollision();
             this.checkCoinCollision();
             this.checkBottleCollisions();
@@ -50,32 +51,41 @@ class World {
     checkEnemyCollisions() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
-                if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
+                if (this.character.isAboveGround()) {
                     this.character.jump();
-                    setTimeout(console.log('wtf'), 100);
                 } else {
-                    this.character.hit();
-                    this.statusBarHealth.setPercentage(this.character.energy);
+                    this.characterIsGettingHit();
                 }
             }
         });
     }
 
+    checkEndbossCollisions() {
+            if(this.character.isColliding(this.level.endboss[0])) {
+                this.characterIsGettingHit();
+            }
+
+    }
+
+    characterIsGettingHit() {
+        this.character.hit();
+        this.statusBarHealth.setPercentage(this.character.energy);
+    }
+
     checkthrowableObjectCollision() {
         for (let i =  0; i < this.level.enemies.length; i++) {
             for (let j = 0; j < this.throwableObjects.length; j++) {
-                if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && this.level.enemies[i] instanceof Chicken) {
+                if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
-                    let timeOfTheExecution = setTimeout(() => {
-                        console.log(this.level.enemies[i]);
-                        this.removeObjectFromScreen(this.level.enemies, i);
-                        clearTimeout(timeOfTheExecution);
-                    }, 2000);
+                    let stringy = i;
+                    setTimeout(() => {
+                        this.removeObjectFromScreen(this.level.enemies, stringy);
+                    }, 5000);
                 }
-                if (this.level.enemies[i].isColliding(this.throwableObjects[j]) && this.level.enemies[i] instanceof Endboss) {
-                    this.level.enemies[i].hitEndboss();
-                    this.statusBarEndbossHealth.setPercentageEndboss(this.level.enemies[i].healthEndboss);
-                    console.log(this.level.enemies[i].healthEndboss);
+                if (this.level.endboss[0].isColliding(this.throwableObjects[j])) {
+                    this.level.endboss[0].hitEndboss();
+                    this.statusBarEndbossHealth.setPercentageEndboss(this.level.endboss[0].healthEndboss);
+                    console.log(this.level.endboss[0].healthEndboss);
                 }
             }
         }
@@ -132,9 +142,11 @@ class World {
         this.addObjectsToMap(this.level.bottles);
 
         this.addToMap(this.character);
+        this.addToMap(this.level.endboss[0]);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
+
 
         this.ctx.translate(-this.camera_x, 0);
 

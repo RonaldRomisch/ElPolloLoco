@@ -6,8 +6,7 @@ function initLevel() {
         [
             new Chicken(),
             new Chicken(),
-            new Chicken(),
-            new Endboss()
+            new Chicken()
         ],
         [
             new Cloud()
@@ -54,6 +53,9 @@ function initLevel() {
             new Collectable('bottle', 800, 330),
             new Collectable('bottle', 1400, 335),
             new Collectable('bottle', -100, 340)
+        ],
+        [
+            new Endboss()
         ]
     );
 }
