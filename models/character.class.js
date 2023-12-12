@@ -3,6 +3,12 @@ class Character extends MovableObject{
     y = -50;
     x = 50;
 
+    showStatusBarEndboss = false;
+
+    conditionStatusBarEndboss() {
+        
+    }
+
     height = 300;
     width = 150;
     speed = 15;
@@ -91,6 +97,10 @@ class Character extends MovableObject{
             //Jump function
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
+            }
+
+            if(this.x > 2340) {
+                this.showStatusBarEndboss = true;
             }
 
             this.world.camera_x = -this.x +100;

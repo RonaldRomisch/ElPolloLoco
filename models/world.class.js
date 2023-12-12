@@ -61,10 +61,9 @@ class World {
     }
 
     checkEndbossCollisions() {
-            if(this.character.isColliding(this.level.endboss[0])) {
-                this.characterIsGettingHit();
-            }
-
+        if(this.character.isColliding(this.level.endboss[0])) {
+            this.characterIsGettingHit();
+        }
     }
 
     characterIsGettingHit() {
@@ -73,8 +72,8 @@ class World {
     }
 
     checkthrowableObjectCollision() {
-        for (let i =  0; i < this.level.enemies.length; i++) {
-            for (let j = 0; j < this.throwableObjects.length; j++) {
+        for (let j = 0; j < this.throwableObjects.length; j++) {
+            for (let i =  0; i < this.level.enemies.length; i++) {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
                     let stringy = i;
@@ -132,7 +131,7 @@ class World {
         this.addToMap(this.statusBarCollectedCoins);
         this.ctx.translate(this.camera_x, 0);
 
-        if (this.character.x > 2340) {
+        if (this.character.showStatusBarEndboss) {
             this.ctx.translate(-this.camera_x, 0); 
             this.addToMap(this.statusBarEndbossHealth);
             this.ctx.translate(this.camera_x, 0);
