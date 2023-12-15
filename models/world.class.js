@@ -10,6 +10,7 @@ class World {
     statusBarCollectedCoins = new StatusBar('coins');
     statusBarEndbossHealth = new StatusBar('endboss');
     throwableObjects = [];
+    chickenToDie = [];
 
 
     constructor(canvas, keyboard) {
@@ -77,9 +78,8 @@ class World {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
                     let stringy = i;
-                    setTimeout(() => {
-                        this.removeObjectFromScreen(this.level.enemies, stringy);
-                    }, 5000);
+                    this.removeChickenFromScreen(this.level.enemies, i);
+                    console.log(i);
                 }
                 if (this.level.endboss[0].isColliding(this.throwableObjects[j])) {
                     this.level.endboss[0].hitEndboss();
@@ -112,6 +112,12 @@ class World {
 
     removeObjectFromScreen(objectArray, indexFromObjectArray) {
         objectArray.splice(indexFromObjectArray, 1);
+    }
+
+    removeChickenFromScreen(objectArray, indexFromObjectArray) {
+        setTimeout(() => {
+            objectArray.splice(indexFromObjectArray, 1);
+        }, 600);
     }
 
     draw() {
