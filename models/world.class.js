@@ -77,9 +77,6 @@ class World {
             for (let i =  0; i < this.level.enemies.length; i++) {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
-                    let stringy = i;
-                    this.removeChickenFromScreen(this.level.enemies, i);
-                    console.log(i);
                 }
                 if (this.level.endboss[0].isColliding(this.throwableObjects[j])) {
                     this.level.endboss[0].hitEndboss();
@@ -114,14 +111,8 @@ class World {
         objectArray.splice(indexFromObjectArray, 1);
     }
 
-    removeChickenFromScreen(objectArray, indexFromObjectArray) {
-        setTimeout(() => {
-            objectArray.splice(indexFromObjectArray, 1);
-        }, 600);
-    }
-
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.camera_x, 0); // Verschiebung der Kamera nach links
         this.addObjectsToMap(this.level.backgroundObjects);
