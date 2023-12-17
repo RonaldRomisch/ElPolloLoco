@@ -19,7 +19,6 @@ class MovableObject extends DrawableObject{
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
-            
         }, 1000 / 25);
     }
 
@@ -45,12 +44,13 @@ class MovableObject extends DrawableObject{
         } else {
             this.lastHit = new Date().getTime();
         }
+        console.log(this.lastHit);
     }
 
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // difference in ms
         timePassed = timePassed / 1000;
-        return timePassed < 1;
+        return timePassed < 2;
     }
 
     isDead() {
