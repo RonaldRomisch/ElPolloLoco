@@ -28,7 +28,6 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkEnemyCollisions();
             this.checkEndbossCollisions();
             this.checkthrowableObjectCollision();
             this.checkCoinCollision();
@@ -36,6 +35,7 @@ class World {
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
+            this.checkEnemyCollisions();
         }, 200);
     }
 
@@ -54,6 +54,7 @@ class World {
             if(this.character.isColliding(enemy)) {
                 if (this.character.isAboveGround()) {
                     this.character.jump();
+                    enemy['dead'] = true;
                 } else {
                     this.characterIsGettingHit();
                 }
