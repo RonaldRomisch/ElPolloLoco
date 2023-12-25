@@ -32,11 +32,9 @@ class World {
             this.checkthrowableObjectCollision();
             this.checkCoinCollision();
             this.checkBottleCollisions();
-        }, 25);
-        setInterval(() => {
             this.checkThrowObjects();
             this.checkEnemyCollisions();
-        }, 200);
+        }, 25);
     }
 
     checkThrowObjects() {

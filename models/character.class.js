@@ -123,8 +123,6 @@ class Character extends MovableObject{
                     window.clearInterval(characterHurtInterval);
                 }, 600);
             } else if(this.isHurt()) {
-                console.log('reallyHurt?');
-                this.energy -= 10;
                 setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING)
