@@ -48,9 +48,7 @@ class MovableObject extends DrawableObject{
 
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // difference in ms
-        timePassed = timePassed / 1000;
-        console.log(timePassed, this.energy);
-        return timePassed < 2;
+        return timePassed < 1000;
     }
 
     isDead() {
@@ -64,12 +62,6 @@ class MovableObject extends DrawableObject{
         } else {
             this.lastHitEndboss = new Date().getTime();
         }
-    }
-
-    endbossIsHurt() {
-        let timePassed = new Date().getTime() - this.lastHitEndboss; // difference in ms
-        timePassed = timePassed / 1000;
-        return timePassed < 2;
     }
 
     earnCoin() {

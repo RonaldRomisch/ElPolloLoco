@@ -10,8 +10,6 @@ class World {
     statusBarCollectedCoins = new StatusBar('coins');
     statusBarEndbossHealth = new StatusBar('endboss');
     throwableObjects = [];
-    chickenToDie = [];
-
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -32,9 +30,14 @@ class World {
             this.checkthrowableObjectCollision();
             this.checkCoinCollision();
             this.checkBottleCollisions();
-            this.checkThrowObjects();
-            this.checkEnemyCollisions();
+            this.checkEnemyCollisionsJump();
         }, 25);
+        setInterval(() => {
+            this.checkThrowObjects();
+        }, 150);
+        setInterval(() => {
+            this.checkEnemyCollisions();
+        }, 350);
     }
 
     checkThrowObjects() {
@@ -47,15 +50,23 @@ class World {
         }
     }
 
-    checkEnemyCollisions() {
+    checkEnemyCollisionsJump() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
                 if (this.character.isAboveGround()) {
                     this.character.jump();
                     enemy['dead'] = true;
-                } else {
-                    this.characterIsGettingHit();
                 }
+            }
+        });
+    }
+
+    checkEnemyCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if(this.character.isColliding(enemy)) {
+                if (!this.character.isAboveGround()) {
+                    this.characterIsGettingHit();
+                } 
             }
         });
     }
@@ -77,10 +88,11 @@ class World {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
                 }
-                if (this.level.endboss[0].isColliding(this.throwableObjects[j])) {
+                if (this.level.endboss[0].isColliding(this.throwableObjects[j]) && this.throwableObjects[j].endbossWasHit == false) {
                     this.level.endboss[0].hitEndboss();
                     this.statusBarEndbossHealth.setPercentageEndboss(this.level.endboss[0].healthEndboss);
-                    console.log(this.level.endboss[0].healthEndboss);
+                    console.log(this.level.endboss[0].healthEndboss, this.throwableObjects[j].endbossWasHit);
+                    this.throwableObjects[j].endbossWasHit = true;
                 }
             }
         }
