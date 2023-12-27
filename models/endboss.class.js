@@ -2,8 +2,9 @@ class Endboss extends MovableObject {
 
     height = 450;
     width = 250;
-    y = 0;
+    y = -100;
     isAlerted = false;
+    isWalking = false;
 
     offset = {
         top: 90,
@@ -12,7 +13,7 @@ class Endboss extends MovableObject {
         right: -20
     }
     
-    IMAGES_WALKING = [
+    IMAGES_ALERTED = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
         'img/4_enemie_boss_chicken/2_alert/G6.png',
         'img/4_enemie_boss_chicken/2_alert/G7.png',
@@ -21,6 +22,13 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/2_alert/G10.png',
         'img/4_enemie_boss_chicken/2_alert/G11.png',
         'img/4_enemie_boss_chicken/2_alert/G12.png'
+    ];
+
+    IMAGES_WALKING = [
+        'img/4_enemie_boss_chicken/1_walk/G1.png',
+        'img/4_enemie_boss_chicken/1_walk/G2.png',
+        'img/4_enemie_boss_chicken/1_walk/G3.png',
+        'img/4_enemie_boss_chicken/1_walk/G4.png'
     ];
 
     IMAGES_HURT = [
@@ -36,10 +44,12 @@ class Endboss extends MovableObject {
     ];
 
     constructor() {
-        super().loadImage(this.IMAGES_WALKING[0]);
+        super().loadImage(this.IMAGES_ALERTED[0]);
+        this.loadImages(this.IMAGES_ALERTED);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
+        this.applyGravity();
         this.x = 2900;
         this.animate();
     }
@@ -47,14 +57,38 @@ class Endboss extends MovableObject {
     animate() {
 
         setInterval(() => {
-            if (isDeadEndboss()) {
+            if (this.isDeadEndboss()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                this.isAlerted = false;
+                setTimeout(() => {
+                    this.stopGame();
+                }, 3000);
             } 
+            else if (this.isWalking) {
+                this.playAnimation(this.IMAGES_WALKING);
+            }
             else if (this.healthEndboss < 50) {
                 this.playAnimation(this.IMAGES_HURT);
+                this.endbossMoveLeft();
+                this.isAlerted = true;
             }
-            this.playAnimation(this.IMAGES_WALKING);
-        }, 300);
+            else {
+                this.playAnimation(this.IMAGES_ALERTED);
+            }
+        }, 200);
 
+        setInterval(() => {
+            if (this.isAlerted) {
+                this.jumpSequence();
+            }
+        }, 3000);
+    }
+
+    endbossMoveLeft() {
+        this.x -= 20;
+    }
+
+    jumpSequence() {
+        this.speedY = 20;
     }
 }

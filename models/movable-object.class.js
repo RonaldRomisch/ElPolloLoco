@@ -12,6 +12,12 @@ class MovableObject extends DrawableObject{
     throwableObjectsInventar = 0;
     EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
     dead = false;
+
+    stopGame() {
+        for (let i = 0; i < 9999; i++) {
+            window.clearInterval(i);
+        }
+    }
     
     applyGravity() {
         setInterval(() => {
@@ -25,7 +31,11 @@ class MovableObject extends DrawableObject{
     isAboveGround() {
         if (this instanceof ThrowableObject) { //Throwable objects should always fall
             return true
-        } else {
+        }
+        else if (this instanceof Endboss) { //Throwable objects should always fall
+            return this.y < 0;
+        } 
+        else {
             return this.y < 130;
         }
     }
