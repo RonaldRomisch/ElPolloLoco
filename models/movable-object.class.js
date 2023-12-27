@@ -55,6 +55,10 @@ class MovableObject extends DrawableObject{
         return this.energy == 0;
     }
 
+    isDeadEndboss() {
+        return this.healthEndboss == 0;
+    }
+
     hitEndboss() {
         this.healthEndboss -= 10;
         if(this.healthEndboss < 0) {

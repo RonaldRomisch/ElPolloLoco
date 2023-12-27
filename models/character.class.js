@@ -5,10 +5,6 @@ class Character extends MovableObject{
 
     showStatusBarEndboss = false;
 
-    conditionStatusBarEndboss() {
-        
-    }
-
     height = 300;
     width = 150;
     speed = 15;

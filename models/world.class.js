@@ -87,12 +87,14 @@ class World {
             for (let i =  0; i < this.level.enemies.length; i++) {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
+                    this.throwableObjects[j].enemyWasHit = true;
                 }
                 if (this.level.endboss[0].isColliding(this.throwableObjects[j]) && this.throwableObjects[j].endbossWasHit == false) {
                     this.level.endboss[0].hitEndboss();
                     this.statusBarEndbossHealth.setPercentageEndboss(this.level.endboss[0].healthEndboss);
                     console.log(this.level.endboss[0].healthEndboss, this.throwableObjects[j].endbossWasHit);
                     this.throwableObjects[j].endbossWasHit = true;
+                    this.throwableObjects[j].enemyWasHit = true;
                 }
             }
         }

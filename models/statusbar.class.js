@@ -160,10 +160,8 @@ class StatusBar extends DrawableObject {
             return 0;
         } else if (this.percentageEndboss > 50) {
             return 1;
-        }else if (this.percentageEndboss > 0) {
-            return 2;
         }else {
-            this.width = 0;
+            return 2;
         }
     }
 }

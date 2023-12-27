@@ -47,10 +47,10 @@ class Endboss extends MovableObject {
     animate() {
 
         setInterval(() => {
-            if (this.isDead()) {
+            if (isDeadEndboss()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } 
-            else if (this.energy < 50) {
+            else if (this.healthEndboss < 50) {
                 this.playAnimation(this.IMAGES_HURT);
             }
             this.playAnimation(this.IMAGES_WALKING);
