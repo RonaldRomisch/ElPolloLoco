@@ -9,6 +9,15 @@ function getHTMLCanvas() {
     `;
 }
 
+function gameOverScreen() {
+    document.getElementById('start-screen').innerHTML += `
+        <div class="game-over-screen">
+            <div>Game Over!</div>
+            <div>You Loser!</div>
+        </div>
+    `;
+}
+
 function init() {
     getHTMLCanvas();
     canvas = document.getElementById('canvas');

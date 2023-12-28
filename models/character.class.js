@@ -112,11 +112,12 @@ class Character extends MovableObject{
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
-        let characterHurtInterval = setInterval(() => {
+        setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
                 setTimeout(() => {
-                    window.clearInterval(characterHurtInterval);
+                    this.stopGame();
+                    gameOverScreen();
                 }, 600);
             } else if(this.isHurt()) {
                 setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);
