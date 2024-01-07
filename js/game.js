@@ -12,9 +12,15 @@ function getHTMLCanvas() {
 function gameOverScreen() {
     document.getElementById('start-screen').innerHTML += `
         <div class="game-over-screen">
-            <div>Game Over!</div>
-            <div>You Loser!</div>
+            <div class="endscreen-text">Game Over!</div>
         </div>
+        <div class="start-button" onclick="init()">Start</div>
+    `;
+}
+
+function youLoseScreen() {
+    document.getElementById('start-screen').innerHTML += `
+        <img class="lose-screen" style="height: 100px;" src="img/9_intro_outro_screens/game_over/oh no you lost!.png">
     `;
 }
 

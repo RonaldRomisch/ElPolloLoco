@@ -14,7 +14,6 @@ h1 {
 }
 
 canvas {
-    background-color: black;
     display: block;
 }
 
@@ -38,6 +37,10 @@ canvas {
     font-family: 'zabras';
     src: url('fonts/zabars.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 } 
+
+#start-screen {
+    position: relative;
+}
 
 .screen-image {
     width: 720px;
@@ -70,8 +73,25 @@ canvas {
     }
 }
 
+.lose-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+}
+
 .game-over-screen {
-    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
     height: 100%;
     width: 100%;
+}
+
+.endscreen-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }

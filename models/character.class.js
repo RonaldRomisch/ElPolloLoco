@@ -117,7 +117,6 @@ class Character extends MovableObject{
                 this.playAnimation(this.IMAGES_DEAD);
                 setTimeout(() => {
                     this.stopGame();
-                    gameOverScreen();
                 }, 600);
             } else if(this.isHurt()) {
                 setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);

@@ -17,9 +17,11 @@ class MovableObject extends DrawableObject{
         for (let i = 0; i < 9999; i++) {
             window.clearInterval(i);
         }
-        setTimeout(() => {
+        youLoseScreen();
+        /* setTimeout(() => {
             gameOverScreen();
-        }, 1000);
+            console.log('wtf');
+        }, 2000); */
     }
     
     applyGravity() {
