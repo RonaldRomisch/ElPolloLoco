@@ -10,6 +10,7 @@ class World {
     statusBarCollectedCoins = new StatusBar('coins');
     statusBarEndbossHealth = new StatusBar('endboss');
     throwableObjects = [];
+    gameStop = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -142,6 +143,12 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
         if (this.character.showStatusBarEndboss) {
+            this.ctx.translate(-this.camera_x, 0); 
+            this.addToMap(this.statusBarEndbossHealth);
+            this.ctx.translate(this.camera_x, 0);
+        }
+
+        if (this.gameStop) {
             this.ctx.translate(-this.camera_x, 0); 
             this.addToMap(this.statusBarEndbossHealth);
             this.ctx.translate(this.camera_x, 0);
