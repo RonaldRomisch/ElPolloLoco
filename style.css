@@ -95,3 +95,48 @@ canvas {
     justify-content: center;
     color: white;
 }
+
+.gameplay-keys {
+    display: flex;
+    font-size: 40px;
+    border: 1px solid black;
+}
+
+.key-arrow-around {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border: 1px solid black;
+}
+
+.explain-key {
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+.img-arrow {
+    height: 50px;
+    border: 3px solid black;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.img-arrow img {
+    height: 40px;
+    border: 1px solid black;
+}
+
+.d-icon {
+    padding: 40px;
+    border: 1px solid black;
+}
+
+.space-key {
+    padding: 40px;
+    border: 1px solid black;
+}
