@@ -13,6 +13,14 @@ h1 {
     text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
 }
 
+.button-container div{
+    display: flex;
+}
+
+.sound-button {
+    height: 30px;
+}
+
 canvas {
     display: block;
 }
@@ -61,6 +69,7 @@ canvas {
     border-radius: 10px;
     border: 1px solid black;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .start-button:hover {
@@ -98,8 +107,7 @@ canvas {
 
 .gameplay-keys {
     display: flex;
-    font-size: 40px;
-    border: 1px solid black;
+    font-size: 35px;
 }
 
 .key-arrow-around {
@@ -107,17 +115,17 @@ canvas {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
-    border: 1px solid black;
+    padding: 20px;
+    margin-right: 20px;
 }
 
 .explain-key {
     margin-bottom: 20px;
-    border: 1px solid black;
 }
 
 .img-arrow {
-    height: 50px;
+    height: 10px;
+    width: 10px;
     border: 3px solid black;
     padding: 30px;
     display: flex;
@@ -126,17 +134,115 @@ canvas {
     border-radius: 100%;
 }
 
+.img-arrow:hover {
+    border: 3px solid white;
+}
+
+.img-arrow:hover img {
+    filter: invert(100%);
+}
+
 .img-arrow img {
     height: 40px;
-    border: 1px solid black;
 }
 
 .d-icon {
-    padding: 40px;
-    border: 1px solid black;
+    padding: 20px;
+    height: 35px;
+    width: 35px;
+    border: 3px solid black;
+    border-radius: 100%;
+    text-align: center;
+}
+
+.d-icon:hover {
+    color: white;
+    border-color: white;
 }
 
 .space-key {
-    padding: 40px;
-    border: 1px solid black;
+    padding: 20px;
+    height: 35px;
+    width: 100px;
+    border: 3px solid black;
+    border-radius: 10%;
+    text-align: center;
+}
+
+.space-key:hover {
+    color: white;
+    border-color: white;
+}
+
+@media (max-width: 700px) {
+
+    .gameplay-keys {
+        font-size: 25px;
+    }
+
+    .key-arrow-around {
+        margin-right: 10px;
+        padding: 10px;
+    }
+
+    .img-arrow {
+        height: 0;
+        width: 0;
+    }
+
+    .img-arrow img {
+        height: 30px;
+    }
+
+    .d-icon {
+        height: 25px;
+        width: 25px;
+    }
+
+    .space-key {
+        height: 25px;
+    }
+}
+
+.space-key:hover {
+    color: white;
+    border-color: white;
+}
+
+@media (max-width: 500px) {
+
+    .gameplay-keys {
+        font-size: 15px;
+    }
+
+    .key-arrow-around {
+        margin-right: 0;
+        padding: 5px;
+    }
+
+    .explain-key {
+        margin-bottom: 5px;
+    }
+
+    .img-arrow {
+        height: 0;
+        width: 0;
+        padding: 15px;
+    }
+
+    .img-arrow img {
+        height: 15px;
+    }
+
+    .d-icon {
+        height: 10px;
+        width: 10px;
+        padding: 10px;
+    }
+
+    .space-key {
+        height: 10px;
+        padding: 10px;
+        width: 50px;
+    }
 }
