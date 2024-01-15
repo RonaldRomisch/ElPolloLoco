@@ -2,11 +2,23 @@ let canvas;
 let ctx;
 let world;
 let keyboard = new Keyboard();
+let soundOn = true;
 
 function getHTMLCanvas() {
     document.getElementById('start-screen').innerHTML = `
         <canvas id="canvas" width="720" height="480"></canvas>
     `;
+}
+
+function changeSound() {
+    if (soundOn) {
+        soundOn = false;
+        document.getElementById('sound-button').src = 'img/icons/stumm.png';
+    }
+    else {
+        soundOn = true;
+        document.getElementById('sound-button').src = 'img/icons/audio.png';
+    }
 }
 
 function gameOverScreen() {

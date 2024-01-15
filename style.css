@@ -13,12 +13,17 @@ h1 {
     text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
 }
 
-.button-container div{
+.button-container {
     display: flex;
+    justify-content: flex-end;
+    width: 620px;
+    z-index: 99;
+    margin-bottom: -35px;
 }
 
-.sound-button {
+#sound-button {
     height: 30px;
+    cursor: pointer;
 }
 
 canvas {
@@ -79,6 +84,10 @@ canvas {
 @media (max-width: 750px) {
     .screen-image {
         width: 400px;
+    }
+
+    .button-container {
+        width: 385px;
     }
 }
 
