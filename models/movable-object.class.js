@@ -81,7 +81,9 @@ class MovableObject extends DrawableObject{
 
     earnCoin() {
         this.collectedCoins += 1;
-        this.EARN_COIN_SOUND.play();
+        if (soundOn) {
+            this.EARN_COIN_SOUND.play();
+        }
     }
 
     fillThrowableObjectInventar() {
