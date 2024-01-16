@@ -11,6 +11,7 @@ class World {
     statusBarEndbossHealth = new StatusBar('endboss');
     throwableObjects = [];
     gameStop = false;
+    gameStartTime = 0;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -32,6 +33,7 @@ class World {
             this.checkCoinCollision();
             this.checkBottleCollisions();
             this.checkEnemyCollisionsJump();
+            this.gameStartTime += 25;
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
@@ -48,6 +50,13 @@ class World {
             this.character.throwableObjectsInventar -= 1;
             this.statusBarThrowObject.setThrowObjects(this.character.throwableObjectsInventar);
             console.log(this.throwableObjects);
+        }
+    }
+
+    addSmallChickenToWorld() {
+        if (this.gameStartTime > 5000) {
+            this.level.push(new SmallChicken());
+            this.gameStartTime %= 5000;
         }
     }
 

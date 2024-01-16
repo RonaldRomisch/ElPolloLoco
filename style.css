@@ -213,11 +213,6 @@ canvas {
     }
 }
 
-.space-key:hover {
-    color: white;
-    border-color: white;
-}
-
 @media (max-width: 500px) {
 
     .gameplay-keys {

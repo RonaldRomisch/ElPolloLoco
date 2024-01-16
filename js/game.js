@@ -47,41 +47,53 @@ function init() {
 document.addEventListener("keydown", (e) => {
     if (e.keyCode == '39') {
         keyboard.RIGHT = true;
+        document.getElementById('right-key-border').style = 'border: 3px solid white;';
+        document.getElementById('right-key-img').style = 'filter: invert(100%);';
     }
     if (e.keyCode == '40') {
         keyboard.DOWN = true;
     }
     if (e.keyCode == '37') {
         keyboard.LEFT = true;
+        document.getElementById('left-key-border').style = 'border: 3px solid white;';
+        document.getElementById('left-key-img').style = 'filter: invert(100%);';
     }
     if (e.keyCode == '38') {
         keyboard.UP = true;
     }
     if (e.keyCode == '32') {
+        document.getElementById('space-key-id').style = 'color: white;';
         keyboard.SPACE = true;
     }
     if (e.keyCode == '68') {
         keyboard.D = true;
+        document.getElementById('d-key-id').style = 'color: white;';
     }
 });
 
 document.addEventListener("keyup", (e) => {
     if (e.keyCode == '39') {
         keyboard.RIGHT = false;
+        document.getElementById('right-key-border').style = 'border: 3px solid black;';
+        document.getElementById('right-key-img').style = 'filter: invert(0);';
     }
     if (e.keyCode == '40') {
         keyboard.DOWN = false;
     }
     if (e.keyCode == '37') {
         keyboard.LEFT = false;
+        document.getElementById('left-key-border').style = 'border: 3px solid black;';
+        document.getElementById('left-key-img').style = 'filter: invert(0);';
     }
     if (e.keyCode == '38') {
         keyboard.UP = false;
     }
     if (e.keyCode == '32') {
         keyboard.SPACE = false;
+        document.getElementById('space-key-id').style = 'color: black;';
     }
     if (e.keyCode == '68') {
         keyboard.D = false;
+        document.getElementById('d-key-id').style = 'color: black;';
     }
 });

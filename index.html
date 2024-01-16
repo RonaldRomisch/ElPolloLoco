@@ -10,6 +10,7 @@
     <script src="models/movable-object.class.js"></script>
     <script src="models/character.class.js"></script>
     <script src="models/chicken.class.js"></script>
+    <script src="models/small-chicken.class.js"></script>
     <script src="models/cloud.class.js"></script>
     <script src="models/world.class.js"></script>
     <script src="models/background-object.class.js"></script>
@@ -21,7 +22,7 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body>
+<body onload="init()">
 
     <h1>El pollo loco</h1>
 
@@ -38,19 +39,19 @@
     <div class="gameplay-keys">
         <div class="key-arrow-around">
             <div class="explain-key">Left</div>
-            <div class="img-arrow"><img src="img/icons/arrow_left.png" alt="arrow_left"></div>
+            <div id="left-key-border" class="img-arrow"><img id="left-key-img" src="img/icons/arrow_left.png" alt="arrow_left"></div>
         </div>
         <div class="key-arrow-around">
             <div class="explain-key">Right</div>
-            <div class="img-arrow"><img src="img/icons/arrow_right.png" alt="arrow_right"></div>
+            <div id="right-key-border" class="img-arrow"><img id="right-key-img" src="img/icons/arrow_right.png" alt="arrow_right"></div>
         </div>
         <div class="key-arrow-around">
             <div class="explain-key">Throw</div>
-            <div class="d-icon">D</div>
+            <div id="d-key-id" class="d-icon">D</div>
         </div>
         <div class="key-arrow-around">
             <div class="explain-key">Jump</div>
-            <div class="space-key">SPACE</div>
+            <div id="space-key-id" class="space-key">SPACE</div>
         </div>
     </div>
     
