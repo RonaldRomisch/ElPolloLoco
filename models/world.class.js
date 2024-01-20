@@ -34,6 +34,7 @@ class World {
             this.checkBottleCollisions();
             this.checkEnemyCollisionsJump();
             this.gameStartTime += 25;
+            this.addSmallChickenToWorld();
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
@@ -54,9 +55,9 @@ class World {
     }
 
     addSmallChickenToWorld() {
-        if (this.gameStartTime > 5000) {
-            this.level.push(new SmallChicken());
-            this.gameStartTime %= 5000;
+        if (this.gameStartTime > 10000) {
+            this.level.enemies.push(new SmallChicken());
+            this.gameStartTime -= 8000;
         }
     }
 

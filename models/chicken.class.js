@@ -29,7 +29,7 @@ class Chicken extends MovableObject {
         this.loadImages(this.IMAGE_DEAD);
         this.loadImages(this.away);
 
-        this.x = 480 + Math.random() * 500;
+        this.x = 480 + Math.random() * 1500;
         this.speed = 0.15 + Math.random() * 1;
 
         this.animate();
@@ -37,7 +37,7 @@ class Chicken extends MovableObject {
     
     animate() {
         setInterval(() => {
-            /* this.moveLeft(); */
+            this.moveLeft();
         }, 1000 / 60);
         
         let intervalChicken = setInterval(() => {
