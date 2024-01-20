@@ -1,4 +1,4 @@
-let level1 
+let level1;
 
 initLevel();
 function initLevel() {
@@ -10,7 +10,17 @@ function initLevel() {
             new SmallChicken()
         ],
         [
-            new Cloud()
+            new Cloud(500),
+            new Cloud(900),
+            new Cloud(1400),
+            new Cloud(2100),
+            new Cloud(2600),
+            new Cloud(3100),
+            new Cloud(3600),
+            new Cloud(4100),
+            new Cloud(4600),
+            new Cloud(5100),
+            new Cloud(6100)
         ],
         [
             new BackgroundObject('img/5_background/layers/air.png', -719, 400),

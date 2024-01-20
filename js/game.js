@@ -30,12 +30,6 @@ function gameOverScreen() {
     `;
 }
 
-function youLoseScreen() {
-    document.getElementById('start-screen').innerHTML += `
-        <img class="lose-screen" style="height: 100%;" src="img/9_intro_outro_screens/game_over/oh no you lost!.png">
-    `;
-}
-
 function init() {
     getHTMLCanvas();
     canvas = document.getElementById('canvas');

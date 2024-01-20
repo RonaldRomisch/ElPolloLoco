@@ -17,7 +17,6 @@ class MovableObject extends DrawableObject{
         for (let i = 0; i < 9999; i++) {
             window.clearInterval(i);
         }
-        /* youLoseScreen(); */
     }
     
     applyGravity() {

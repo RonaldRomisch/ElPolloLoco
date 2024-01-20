@@ -35,6 +35,7 @@ class World {
             this.checkEnemyCollisionsJump();
             this.gameStartTime += 25;
             this.addSmallChickenToWorld();
+            this.addCloudsToWorld();
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
@@ -61,10 +62,17 @@ class World {
         }
     }
 
+    addCloudsToWorld() {
+        if (this.gameStartTime > 10000) {
+            this.level.clouds.push(new Cloud(6100));
+            this.gameStartTime -= 8000;
+        }
+    }
+
     checkEnemyCollisionsJump() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
-                if (this.character.isAboveGround()) {
+                if (this.character.isAboveGround() && enemy['dead'] == false) {
                     this.character.jump();
                     enemy['dead'] = true;
                 }
@@ -75,7 +83,7 @@ class World {
     checkEnemyCollisions() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
-                if (!this.character.isAboveGround() || enemy['dead'] == false) {
+                if (!this.character.isAboveGround() && enemy['dead'] == false) {
                     this.characterIsGettingHit();
                 } 
             }
@@ -140,6 +148,8 @@ class World {
 
         this.ctx.translate(this.camera_x, 0); // Verschiebung der Kamera nach links
         this.addObjectsToMap(this.level.backgroundObjects);
+
+        this.addObjectsToMap(this.level.clouds);
         
         this.ctx.translate(-this.camera_x, 0); 
         // -------- Space for fixed object
@@ -169,7 +179,6 @@ class World {
 
         this.addToMap(this.character);
         this.addToMap(this.level.endboss[0]);
-        this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
 

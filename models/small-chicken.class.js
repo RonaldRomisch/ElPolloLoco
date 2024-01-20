@@ -31,14 +31,16 @@ class SmallChicken extends MovableObject{
         this.loadImages(this.away);
 
         this.x = 3280 + Math.random() * 500;
-        this.speed = 0.15 + Math.random() * 10;
+        this.speed = 0.15 + Math.random() * 6;
 
         this.animate();
     }
 
     animate() {
         setInterval(() => {
-            this.moveLeft();
+            if (!this.dead) {
+                this.moveLeft();
+            }
         }, 1000 / 60);
 
         let intervalChicken = setInterval(() => {
