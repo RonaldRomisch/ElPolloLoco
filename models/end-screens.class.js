@@ -1,0 +1,3 @@
+class EndScreen extends DrawableObject {
+
+}

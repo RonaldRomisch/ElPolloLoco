@@ -10,7 +10,6 @@ class World {
     statusBarCollectedCoins = new StatusBar('coins');
     statusBarEndbossHealth = new StatusBar('endboss');
     throwableObjects = [];
-    gameStop = false;
     gameStartTime = 0;
 
     constructor(canvas, keyboard) {
@@ -36,6 +35,7 @@ class World {
             this.gameStartTime += 25;
             this.addSmallChickenToWorld();
             this.addCloudsToWorld();
+            this.showEndscreen();
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
@@ -167,12 +167,6 @@ class World {
             this.addToMap(this.statusBarEndbossHealth);
             this.ctx.translate(this.camera_x, 0);
         }
-
-        if (this.gameStop) {
-            this.ctx.translate(-this.camera_x, 0); 
-            this.addToMap(this.statusBarEndbossHealth);
-            this.ctx.translate(this.camera_x, 0);
-        }
         
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
@@ -182,14 +176,23 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
 
-
         this.ctx.translate(-this.camera_x, 0);
+
+        if (this.character.dead) {
+            this.ctx.translate(-this.camera_x, 0); 
+            this.addToMap(new BackgroundObject('img/9_intro_outro_screens/game_over/game over.png', 50));
+            this.ctx.translate(this.camera_x, 0);
+        }
 
         //draw() wird immer wieder aufgerufen
         let self = this;
         requestAnimationFrame(function() {
             self.draw();//the word "this" is not known in the function requestAnimationFrame
         });
+    }
+
+    showEndscreen() {
+        
     }
 
     addObjectsToMap(objects) {

@@ -12,6 +12,7 @@ class MovableObject extends DrawableObject{
     throwableObjectsInventar = 0;
     EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
     dead = false;
+    gameStop = false;
 
     stopGame() {
         for (let i = 0; i < 9999; i++) {
