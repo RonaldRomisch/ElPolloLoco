@@ -1,6 +1,6 @@
 class Character extends MovableObject{
     
-    y = -50;
+    y = -45;
     x = 50;
 
     showStatusBarEndboss = false;
@@ -111,15 +111,21 @@ class Character extends MovableObject{
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
-                if (soundOn) {
+                if (soundOn && !this.isAboveGround()) {
                     this.walking_sound.play();
+                }
+                else {
+                    this.walking_sound.pause();
                 }
             }
             if (this.world.keyboard.LEFT && this.x > -500) {
                 this.moveLeft();
                 this.otherDirection = true;
-                if (soundOn) {
+                if (soundOn && !this.isAboveGround()) {
                     this.walking_sound.play();
+                }
+                else {
+                    this.walking_sound.pause();
                 }
             }
             //Jump function
@@ -135,8 +141,8 @@ class Character extends MovableObject{
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-                this.dead = true;
                 setTimeout(() => {
+                    this.dead = true;
                     this.stopGame();
                 }, 600);
             } else if(this.isHurt()) {

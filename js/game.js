@@ -10,6 +10,14 @@ function getHTMLCanvas() {
     `;
 }
 
+function getBackToStartScreen() {
+    document.getElementById('start-screen').innerHTML = `
+        <div class="screen-image">
+            <div class="start-button" onclick="init()">Start</div>
+        </div>
+    `;
+}
+
 function changeSound() {
     if (soundOn) {
         soundOn = false;
