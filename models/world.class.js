@@ -12,6 +12,7 @@ class World {
     throwableObjects = [];
     gameStartTime = 0;
     endScreenX;
+    background_sound = new Audio('audio/background/Sakura-Girl-Daisy-chosic.com_.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -28,6 +29,7 @@ class World {
 
     run() {
         setInterval(() => {
+            this.background_sound.play();
             this.checkEndbossCollisions();
             this.checkthrowableObjectCollision();
             this.checkCoinCollision();
