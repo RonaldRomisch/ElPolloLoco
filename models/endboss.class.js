@@ -54,6 +54,8 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
+    cry_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
+
     animate() {
 
         setInterval(() => {
