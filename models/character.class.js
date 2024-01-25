@@ -92,6 +92,9 @@ class Character extends MovableObject{
 
     world;
     walking_sound = new Audio('audio/character/walking.mp3');
+    snoring_sound = new Audio('audio/character/snoring.mp3');
+    jumping_sound = new Audio('audio/character/jump.mp3');
+    hurt_sound = new Audio('audio/character/hurt.mp3');
 
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
@@ -148,6 +151,7 @@ class Character extends MovableObject{
             } else if(this.isHurt()) {
                 setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);
                 this.durationOfStanding = 0;
+                this.hurt_sound.play();
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING)
                 this.durationOfStanding = 0;
@@ -171,5 +175,11 @@ class Character extends MovableObject{
 
     jump() {
         this.speedY = 23;
+        if (soundOn) {
+            this.jumping_sound.play();
+        }
+        else {
+            this.jumping_sound.pause();
+        }
     }
 }

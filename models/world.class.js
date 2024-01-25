@@ -13,6 +13,7 @@ class World {
     gameStartTime = 0;
     endScreenX;
     background_sound = new Audio('audio/background/Sakura-Girl-Daisy-chosic.com_.mp3');
+    endboss_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -21,6 +22,8 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.background_sound.play();
+        this.background_sound.volume = 0.01;
     }
 
     setWorld() {
@@ -29,7 +32,6 @@ class World {
 
     run() {
         setInterval(() => {
-            this.background_sound.play();
             this.checkEndbossCollisions();
             this.checkthrowableObjectCollision();
             this.checkCoinCollision();
@@ -39,6 +41,7 @@ class World {
             this.addCloudsToWorld();
             this.timeFromBeginning();
             this.updateXForEndscreen();
+            this.stopAndPlayBackgroundMusic();
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
@@ -46,6 +49,15 @@ class World {
         setInterval(() => {
             this.checkEnemyCollisions();
         }, 350);
+    }
+
+    stopAndPlayBackgroundMusic() {
+        if (soundOn && !this.level.endboss[0].dead && !this.character.dead) {
+            this.background_sound.play();
+        }
+        else {
+            this.background_sound.pause();
+        }
     }
 
     timeFromBeginning() {
