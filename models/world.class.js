@@ -15,6 +15,7 @@ class World {
     background_sound = new Audio('audio/background/Sakura-Girl-Daisy-chosic.com_.mp3');
     endboss_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
     cry_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
+    bottle_sound = new Audio('audio/bottle/bottle_sound.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -42,7 +43,7 @@ class World {
             this.addCloudsToWorld();
             this.timeFromBeginning();
             this.updateXForEndscreen();
-            this.stopAndPlayBackgroundMusic();
+            this.stopAndPlayWorldMusic();
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
@@ -52,12 +53,18 @@ class World {
         }, 350);
     }
 
-    stopAndPlayBackgroundMusic() {
+    stopAndPlayWorldMusic() {
         if (soundOn && !this.level.endboss[0].dead && !this.character.dead) {
             this.background_sound.play();
+            this.endboss_sound.muted = false;
+            this.cry_sound.muted = false;
+            this.bottle_sound.muted = false;
         }
         else {
             this.background_sound.pause();
+            this.endboss_sound.muted = true;
+            this.cry_sound.muted = true;
+            this.bottle_sound.muted = true;
         }
     }
 
@@ -132,6 +139,7 @@ class World {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
                     this.throwableObjects[j].enemyWasHit = true;
+                    this.bottle_sound.play();
                 }
                 if (this.level.endboss[0].isColliding(this.throwableObjects[j]) && this.throwableObjects[j].endbossWasHit == false) {
                     this.level.endboss[0].hitEndboss();
@@ -140,6 +148,7 @@ class World {
                     this.throwableObjects[j].endbossWasHit = true;
                     this.throwableObjects[j].enemyWasHit = true;
                     this.cry_sound.play();
+                    this.bottle_sound.play();
                 }
             }
         }
