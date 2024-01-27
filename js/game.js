@@ -2,7 +2,7 @@ let canvas;
 let ctx;
 let world;
 let keyboard = new Keyboard();
-let soundOn = true;
+let soundOn = false;
 
 function getHTMLCanvas() {
     document.getElementById('start-screen').innerHTML = `
@@ -16,6 +16,7 @@ function getBackToStartScreen() {
             <div class="start-button" onclick="init()">Start</div>
         </div>
     `;
+    soundOn = false;
 }
 
 function changeSound() {
