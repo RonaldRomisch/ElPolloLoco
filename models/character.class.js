@@ -166,7 +166,12 @@ class Character extends MovableObject{
                 this.durationOfStanding += 100;
                 if (this.durationOfStanding > 4000) {
                     this.playAnimation(this.IMAGES_SLEEPING);
-                    this.snoring_sound.play();
+                    if (soundOn) {
+                        this.snoring_sound.play();
+                    }
+                    else {
+                        this.snoring_sound.pause();
+                    }
                 }
                 else {
                     this.playAnimation(this.IMAGES_STANDING);
@@ -184,6 +189,7 @@ class Character extends MovableObject{
         this.speedY = 23;
         if (soundOn) {
             this.jumping_sound.play();
+            this.snoring_sound.pause();
         }
         else {
             this.jumping_sound.pause();
