@@ -152,7 +152,9 @@ class Character extends MovableObject{
             } else if(this.isHurt()) {
                 setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);
                 this.resetDurationOfStanding();
-                this.hurt_sound.play();
+                if (soundOn) {
+                    this.hurt_sound.play();
+                }
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING)
                 this.resetDurationOfStanding();
@@ -169,13 +171,15 @@ class Character extends MovableObject{
                     if (soundOn) {
                         this.snoring_sound.play();
                     }
-                    else {
+                    else if (this.snoring_sound.play() !== undefined){
                         this.snoring_sound.pause();
                     }
                 }
                 else {
                     this.playAnimation(this.IMAGES_STANDING);
-                    this.snoring_sound.pause();
+                    if (this.snoring_sound.play() !== undefined){
+                        this.snoring_sound.pause();
+                    }
                 }
             }
         }, 100);   
