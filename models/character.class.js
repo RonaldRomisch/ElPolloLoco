@@ -187,12 +187,6 @@ class Character extends MovableObject{
 
     jump() {
         this.speedY = 23;
-        if (soundOn) {
-            this.jumping_sound.play();
-            this.snoring_sound.pause();
-        }
-        else {
-            this.jumping_sound.pause();
-        }
+        this.jumping_sound.play();
     }
 }

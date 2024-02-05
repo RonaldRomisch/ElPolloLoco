@@ -24,7 +24,8 @@ class World {
         this.character.walking_sound,
         this.character.snoring_sound,
         this.character.jumping_sound,
-        this.character.hurt_sound
+        this.character.hurt_sound,
+        this.character.EARN_COIN_SOUND
     ];
 
     constructor(canvas, keyboard) {
@@ -35,6 +36,7 @@ class World {
         this.setWorld();
         this.run();
         this.background_sound.volume = 0.08;
+        this.muteAndUnmuteAllSounds();
     }
 
     muteAndUnmuteAllSounds() {

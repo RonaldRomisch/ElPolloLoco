@@ -23,10 +23,12 @@ function changeSound() {
     if (soundOn) {
         soundOn = false;
         document.getElementById('sound-button').src = 'img/icons/stumm.png';
+        world.muteAndUnmuteAllSounds();
     }
     else {
         soundOn = true;
         document.getElementById('sound-button').src = 'img/icons/audio.png';
+        world.muteAndUnmuteAllSounds();
     }
 }
 
