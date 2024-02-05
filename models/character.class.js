@@ -171,15 +171,11 @@ class Character extends MovableObject{
                     if (soundOn) {
                         this.snoring_sound.play();
                     }
-                    else if (this.snoring_sound.play() !== undefined){
-                        this.snoring_sound.pause();
-                    }
+                    this.snoring_sound.pause();
                 }
                 else {
                     this.playAnimation(this.IMAGES_STANDING);
-                    if (this.snoring_sound.play() !== undefined){
-                        this.snoring_sound.pause();
-                    }
+                    this.snoring_sound.pause();
                 }
             }
         }, 100);   

@@ -16,6 +16,16 @@ class World {
     endboss_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
     cry_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
     bottle_sound = new Audio('audio/bottle/bottle_sound.mp3');
+    sounds_Array = [
+        this.background_sound,
+        this.endboss_sound,
+        this.cry_sound,
+        this.bottle_sound,
+        this.character.walking_sound,
+        this.character.snoring_sound,
+        this.character.jumping_sound,
+        this.character.hurt_sound
+    ];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -24,8 +34,20 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.background_sound.play();
         this.background_sound.volume = 0.08;
+    }
+
+    muteAndUnmuteAllSounds() {
+        if (!soundOn) {
+            for (let i = 0; i < this.sounds_Array.length; i++) {
+                this.sounds_Array[i].muted = true;
+            }
+        }
+        else {
+            for (let i = 0; i < this.sounds_Array.length; i++) {
+                this.sounds_Array[i].muted = false;
+            }
+        }
     }
 
     setWorld() {
@@ -43,29 +65,14 @@ class World {
             this.addCloudsToWorld();
             this.timeFromBeginning();
             this.updateXForEndscreen();
-            this.stopAndPlayWorldMusic();
         }, 25);
         setInterval(() => {
             this.checkThrowObjects();
         }, 150);
         setInterval(() => {
             this.checkEnemyCollisions();
-        }, 350);
-    }
-
-    stopAndPlayWorldMusic() {
-        if (soundOn && !this.level.endboss[0].dead && !this.character.dead) {
             this.background_sound.play();
-            this.endboss_sound.muted = false;
-            this.cry_sound.muted = false;
-            this.bottle_sound.muted = false;
-        }
-        else {
-            this.background_sound.pause();
-            this.endboss_sound.muted = true;
-            this.cry_sound.muted = true;
-            this.bottle_sound.muted = true;
-        }
+        }, 350);
     }
 
     timeFromBeginning() {
