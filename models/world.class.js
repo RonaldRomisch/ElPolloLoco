@@ -12,12 +12,10 @@ class World {
     throwableObjects = [];
     gameStartTime = 0;
     endScreenX;
-    background_sound = new Audio('audio/background/Sakura-Girl-Daisy-chosic.com_.mp3');
     endboss_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
     cry_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
     bottle_sound = new Audio('audio/bottle/bottle_sound.mp3');
     sounds_Array = [
-        this.background_sound,
         this.endboss_sound,
         this.cry_sound,
         this.bottle_sound,
@@ -35,7 +33,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.background_sound.volume = 0.08;
         this.muteAndUnmuteAllSounds();
     }
 
@@ -73,7 +70,7 @@ class World {
         }, 150);
         setInterval(() => {
             this.checkEnemyCollisions();
-            this.background_sound.play();
+            background_sound.play();
         }, 350);
     }
 

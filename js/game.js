@@ -3,6 +3,9 @@ let ctx;
 let world;
 let keyboard = new Keyboard();
 let soundOn = false;
+const background_sound = new Audio('audio/background/Sakura-Girl-Daisy-chosic.com_.mp3');
+background_sound.volume = 0.08;
+background_sound.muted = true;
 
 function getHTMLCanvas() {
     document.getElementById('start-screen').innerHTML = `
@@ -16,18 +19,26 @@ function getBackToStartScreen() {
             <div class="start-button" onclick="init()">Start</div>
         </div>
     `;
-    soundOn = false;
 }
 
-function changeSound() {
+function muteSounds() {
     if (soundOn) {
         soundOn = false;
         document.getElementById('sound-button').src = 'img/icons/stumm.png';
-        world.muteAndUnmuteAllSounds();
+        muteAndMuteStartScreen();
+        background_sound.muted = true;
     }
     else {
         soundOn = true;
         document.getElementById('sound-button').src = 'img/icons/audio.png';
+        muteAndMuteStartScreen();
+        background_sound.muted = false;
+        background_sound.play();
+    }
+}
+
+function muteAndMuteStartScreen() {
+    if (world) {
         world.muteAndUnmuteAllSounds();
     }
 }
