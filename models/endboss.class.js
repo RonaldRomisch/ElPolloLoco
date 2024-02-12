@@ -63,7 +63,7 @@ class Endboss extends MovableObject {
                 this.isAlerted = false;
                 setTimeout(() => {
                     this.dead = true;
-                    this.stopGame();
+                    stopGame();
                 }, 2000);
             } 
             else if (this.isWalking) {

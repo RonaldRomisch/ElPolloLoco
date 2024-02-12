@@ -226,6 +226,10 @@ canvas {
 
 @media (orientation:landscape) and (max-height: 800px) {
 
+    h1 {
+        display: none;
+    }
+
     .gameplay-keys {
         font-size: 15px;
         /* display: none; */
@@ -282,7 +286,7 @@ canvas {
 
     @keyframes turn {
         from {transform: rotate(0deg)}
-        to {transform: rotate(-45deg)}
+        to {transform: rotate(-35deg)}
     }
 
     .switch-screen {
@@ -291,7 +295,7 @@ canvas {
     }
 
     .switch-screen img {
-        animation: turn 1s infinite linear;
+        animation: turn 2s infinite linear;
     }
 
 }

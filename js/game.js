@@ -18,6 +18,15 @@ function getBackToStartScreen() {
     `;
 }
 
+function stopGame() {
+    for (let i = 0; i < 9999; i++) {
+        window.clearInterval(i);
+    }
+    setTimeout(() => {
+        getBackToStartScreen();
+    }, 2000);
+}
+
 function muteSounds() {
     if (soundOn) {
         soundOn = false;

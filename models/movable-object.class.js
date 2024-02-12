@@ -12,15 +12,6 @@ class MovableObject extends DrawableObject{
     throwableObjectsInventar = 0;
     dead = false;
     gameStop = false;
-
-    stopGame() {
-        for (let i = 0; i < 9999; i++) {
-            window.clearInterval(i);
-        }
-        setTimeout(() => {
-            getBackToStartScreen();
-        }, 2000);
-    }
     
     applyGravity() {
         setInterval(() => {
