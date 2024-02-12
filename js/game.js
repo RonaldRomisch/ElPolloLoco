@@ -3,9 +3,6 @@ let ctx;
 let world;
 let keyboard = new Keyboard();
 let soundOn = false;
-const background_sound = new Audio('audio/background/Sakura-Girl-Daisy-chosic.com_.mp3');
-background_sound.volume = 0.08;
-background_sound.muted = true;
 
 function getHTMLCanvas() {
     document.getElementById('start-screen').innerHTML = `

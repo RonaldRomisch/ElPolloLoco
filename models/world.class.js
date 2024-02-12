@@ -12,19 +12,6 @@ class World {
     throwableObjects = [];
     gameStartTime = 0;
     endScreenX;
-    endboss_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
-    cry_sound = new Audio('audio/enemies/albundyx-mexican-turkey-106743.mp3');
-    bottle_sound = new Audio('audio/bottle/bottle_sound.mp3');
-    sounds_Array = [
-        this.endboss_sound,
-        this.cry_sound,
-        this.bottle_sound,
-        this.character.walking_sound,
-        this.character.snoring_sound,
-        this.character.jumping_sound,
-        this.character.hurt_sound,
-        this.character.EARN_COIN_SOUND
-    ];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -38,13 +25,13 @@ class World {
 
     muteAndUnmuteAllSounds() {
         if (!soundOn) {
-            for (let i = 0; i < this.sounds_Array.length; i++) {
-                this.sounds_Array[i].muted = true;
+            for (let i = 0; i < sounds_Array.length; i++) {
+                sounds_Array[i].muted = true;
             }
         }
         else {
-            for (let i = 0; i < this.sounds_Array.length; i++) {
-                this.sounds_Array[i].muted = false;
+            for (let i = 0; i < sounds_Array.length; i++) {
+                sounds_Array[i].muted = false;
             }
         }
     }
@@ -145,7 +132,7 @@ class World {
                 if (this.level.enemies[i].isColliding(this.throwableObjects[j])) {
                     this.level.enemies[i]['dead'] = true;
                     this.throwableObjects[j].enemyWasHit = true;
-                    this.bottle_sound.play();
+                    bottle_sound.play();
                 }
                 if (this.level.endboss[0].isColliding(this.throwableObjects[j]) && this.throwableObjects[j].endbossWasHit == false) {
                     this.level.endboss[0].hitEndboss();
@@ -153,8 +140,8 @@ class World {
                     console.log(this.level.endboss[0].healthEndboss, this.throwableObjects[j].endbossWasHit);
                     this.throwableObjects[j].endbossWasHit = true;
                     this.throwableObjects[j].enemyWasHit = true;
-                    this.cry_sound.play();
-                    this.bottle_sound.play();
+                    cry_sound.play();
+                    bottle_sound.play();
                 }
             }
         }

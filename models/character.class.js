@@ -91,10 +91,6 @@ class Character extends MovableObject{
     ];
 
     world;
-    walking_sound = new Audio('audio/character/walking.mp3');
-    snoring_sound = new Audio('audio/character/snoring.mp3');
-    jumping_sound = new Audio('audio/character/jump.mp3');
-    hurt_sound = new Audio('audio/character/hurt.mp3');
 
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
@@ -105,31 +101,30 @@ class Character extends MovableObject{
         this.loadImages(this.IMAGES_STANDING);
         this.loadImages(this.IMAGES_SLEEPING);
         this.applyGravity();
-        this.jumping_sound.volume = 0.1;
         this.animate();
     }
 
     animate() {
         setInterval(() => {
-            this.walking_sound.pause();
+            walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
                 if (soundOn && !this.isAboveGround()) {
-                    this.walking_sound.play();
+                    walking_sound.play();
                 }
                 else {
-                    this.walking_sound.pause();
+                    walking_sound.pause();
                 }
             }
             if (this.world.keyboard.LEFT && this.x > -500) {
                 this.moveLeft();
                 this.otherDirection = true;
                 if (soundOn && !this.isAboveGround()) {
-                    this.walking_sound.play();
+                    walking_sound.play();
                 }
                 else {
-                    this.walking_sound.pause();
+                    walking_sound.pause();
                 }
             }
             //Jump function
@@ -153,7 +148,7 @@ class Character extends MovableObject{
                 setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);
                 this.resetDurationOfStanding();
                 if (soundOn) {
-                    this.hurt_sound.play();
+                    hurt_sound.play();
                 }
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING)
@@ -169,13 +164,13 @@ class Character extends MovableObject{
                 if (this.durationOfStanding > 4000) {
                     this.playAnimation(this.IMAGES_SLEEPING);
                     if (soundOn) {
-                        this.snoring_sound.play();
+                        snoring_sound.play();
                     }
-                    this.snoring_sound.pause();
+                    snoring_sound.pause();
                 }
                 else {
                     this.playAnimation(this.IMAGES_STANDING);
-                    this.snoring_sound.pause();
+                    snoring_sound.pause();
                 }
             }
         }, 100);   
@@ -187,6 +182,6 @@ class Character extends MovableObject{
 
     jump() {
         this.speedY = 23;
-        this.jumping_sound.play();
+        jumping_sound.play();
     }
 }

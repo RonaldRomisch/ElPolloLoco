@@ -10,7 +10,6 @@ class MovableObject extends DrawableObject{
     lastHitEndboss = 0;
     collectedCoins = 0;
     throwableObjectsInventar = 0;
-    EARN_COIN_SOUND = new Audio('audio/coin/normal.mp3');
     dead = false;
     gameStop = false;
 
@@ -84,7 +83,7 @@ class MovableObject extends DrawableObject{
 
     earnCoin() {
         this.collectedCoins += 1;
-        this.EARN_COIN_SOUND.play();
+        EARN_COIN_SOUND.play();
     }
 
     fillThrowableObjectInventar() {

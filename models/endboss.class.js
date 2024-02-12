@@ -64,7 +64,7 @@ class Endboss extends MovableObject {
                 setTimeout(() => {
                     this.dead = true;
                     this.stopGame();
-                }, 3000);
+                }, 2000);
             } 
             else if (this.isWalking) {
                 this.playAnimation(this.IMAGES_WALKING);
