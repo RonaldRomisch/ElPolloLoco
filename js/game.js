@@ -4,6 +4,11 @@ let world;
 let keyboard = new Keyboard();
 let soundOn = false;
 
+let leftWalking = document.getElementById('left-key-border');
+let rightWalking = document.getElementById('right-key-border');
+let jumpingClick = document.getElementById('d-key-id');
+let throwingClick = document.getElementById('space-key-id');
+
 function getHTMLCanvas() {
     document.getElementById('start-screen').innerHTML = `
         <canvas id="canvas" width="720" height="480"></canvas>
@@ -118,4 +123,17 @@ document.addEventListener("keyup", (e) => {
         keyboard.D = false;
         document.getElementById('d-key-id').style = 'color: black;';
     }
+});
+
+document.addEventListener("pointerdown", (e) => {
+    console.log(e);
+    if(e.leftWalking) {
+        console.log('WTF');
+        keyboard.LEFT = true;
+    }
+});
+
+document.addEventListener("pointerup", (e) => {
+    console.log('hello');
+    keyboard.LEFT = false;
 });
