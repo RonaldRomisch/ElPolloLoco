@@ -4,10 +4,10 @@ let world;
 let keyboard = new Keyboard();
 let soundOn = false;
 
-let leftWalking = document.getElementById('left-key-border');
-let rightWalking = document.getElementById('right-key-border');
-let jumpingClick = document.getElementById('d-key-id');
-let throwingClick = document.getElementById('space-key-id');
+const leftWalkingElement = document.getElementById('left-key-border');
+const rightWalkingElement = document.getElementById('right-key-border');
+const throwingClickElement = document.getElementById('d-key-id');
+const jumpingClickElement = document.getElementById('space-key-id');
 
 function getHTMLCanvas() {
     document.getElementById('start-screen').innerHTML = `
@@ -125,15 +125,26 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-document.addEventListener("pointerdown", (e) => {
-    console.log(e);
-    if(e.leftWalking) {
-        console.log('WTF');
-        keyboard.LEFT = true;
-    }
+leftWalkingElement.addEventListener("pointerdown", (e) => {
+    keyboard.LEFT = true;
 });
 
-document.addEventListener("pointerup", (e) => {
-    console.log('hello');
+rightWalkingElement.addEventListener("pointerdown", (e) => {
+    keyboard.RIGHT = true;
+});
+
+jumpingClickElement.addEventListener("pointerdown", (e) => {
+    keyboard.SPACE = true;
+    console.log('jump');
+});
+
+throwingClickElement.addEventListener("pointerdown", (e) => {
+    keyboard.D = true;
+});
+
+window.addEventListener("pointerout", (e) => {
     keyboard.LEFT = false;
+    keyboard.RIGHT = false;
+    keyboard.SPACE = false;
+    keyboard.D = false;
 });
