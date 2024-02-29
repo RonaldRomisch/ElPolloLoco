@@ -173,6 +173,9 @@ canvas {
     border: 3px solid black;
     border-radius: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .d-icon:hover {
@@ -224,7 +227,7 @@ canvas {
     }
 }
 
-@media (orientation:landscape) and (max-height: 800px) {
+@media (orientation:landscape) and (max-height: 800px) and (max-width: 1000px) {
 
     h1 {
         display: none;
@@ -324,6 +327,11 @@ canvas {
     .key-arrow-around {
         padding: 0;
     }
+}
+
+.bottle-button {
+    height: 50px;
+    width: 50px;
 }
 
 .switch-screen {

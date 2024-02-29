@@ -138,13 +138,38 @@ jumpingClickElement.addEventListener("pointerdown", (e) => {
     console.log('jump');
 });
 
-throwingClickElement.addEventListener("pointerdown", (e) => {
+throwingClickElement.addEventListener("pointerdown", () => {
     keyboard.D = true;
 });
 
-window.addEventListener("pointerout", (e) => {
+window.addEventListener("pointerout", () => {
     keyboard.LEFT = false;
     keyboard.RIGHT = false;
     keyboard.SPACE = false;
     keyboard.D = false;
 });
+
+window.addEventListener("resize", () => {
+    if (screenIsOnLandscapeMode()) {
+        changeButtonsIfScreenChanges();
+    }
+    else {
+        
+    }
+});
+
+function screenIsOnLandscapeMode() {
+    return screen.width < 1000 && screen.height < 800;
+}
+
+function changeButtonsIfScreenIsLandscapeMode() {
+    document.getElementById('d-key-id').innerHTML = `
+        <img class="bottle-button" src="img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png">
+    `;
+    document.getElementById('space-key-id').innerHTML = `Jump`;
+}
+
+function changeButtonsIfScreenIsPortraitMode() {
+    document.getElementById('d-key-id').innerHTML = `D`;
+    document.getElementById('space-key-id').innerHTML = `Space`;
+}
