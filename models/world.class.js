@@ -21,6 +21,14 @@ class World {
         this.setWorld();
         this.run();
         this.muteAndUnmuteAllSounds();
+        this.restartIntervalsFromEnemies();
+    }
+
+    restartIntervalsFromEnemies() {
+        for (let i = 0; i < this.level.enemies.length; i++) {
+            this.level.enemies[i].animate();
+        }
+        this.level.endboss[0].animate();
     }
 
     muteAndUnmuteAllSounds() {
