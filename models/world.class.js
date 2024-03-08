@@ -29,6 +29,7 @@ class World {
             this.level.enemies[i].animate();
         }
         this.level.endboss[0].animate();
+        this.level.endboss[0].dead = false;
     }
 
     muteAndUnmuteAllSounds() {
