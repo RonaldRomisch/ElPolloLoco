@@ -21,15 +21,16 @@ class World {
         this.setWorld();
         this.run();
         this.muteAndUnmuteAllSounds();
-        this.restartIntervalsFromEnemies();
+        this.restartLevelParts();
     }
 
-    restartIntervalsFromEnemies() {
+    restartLevelParts() {
         for (let i = 0; i < this.level.enemies.length; i++) {
             this.level.enemies[i].animate();
         }
         this.level.endboss[0].animate();
         this.level.endboss[0].dead = false;
+        initLevel();
     }
 
     muteAndUnmuteAllSounds() {
@@ -85,7 +86,6 @@ class World {
             this.character.throwableObjectsInventar -= 1;
             this.statusBarThrowObject.setThrowObjects(this.character.throwableObjectsInventar);
             this.character.resetDurationOfStanding();
-            console.log(this.throwableObjects);
         }
     }
 
@@ -215,8 +215,11 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0);
 
-        if (this.character.dead || this.level.endboss[0].dead) {
+        if (this.level.endboss[0].dead) {
             this.addToMap(new BackgroundObject('img/9_intro_outro_screens/game_over/game over.png', 0));
+        }
+        if (this.character.dead) {
+            this.addToMap(new BackgroundObject('img/9_intro_outro_screens/game_over/oh no you lost!.png', 0));
         }
 
         //draw() wird immer wieder aufgerufen

@@ -11,6 +11,10 @@ body {
     display: none;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 h1 {
     font-size: 64px;
     letter-spacing: 3px;
@@ -46,8 +50,13 @@ canvas {
     canvas {
         width: 100%;
     }
+    
     .button-container {
         width: 100%;
+    }
+    
+    h1 {
+        display: none;
     }
 }
 

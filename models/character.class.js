@@ -7,7 +7,7 @@ class Character extends MovableObject{
 
     height = 300;
     width = 150;
-    speed = 15;
+    speed = 5;
 
     durationOfStanding = 0;
 
@@ -104,7 +104,13 @@ class Character extends MovableObject{
         this.animate();
     }
 
+    /**
+     * Activates the interval sequences of the character
+     */
     animate() {
+        /**
+         * Interval for walking sound, animation and movement of the character
+         */
         setInterval(() => {
             walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -137,11 +143,13 @@ class Character extends MovableObject{
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
+        /**
+         * Interval for the time the caracter is hurt, idling around or dead
+         */
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
                 setTimeout(() => {
-                    console.log('character');
                     this.dead = true;
                     stopGame();
                 }, 600);
@@ -177,10 +185,16 @@ class Character extends MovableObject{
         }, 100);   
     }
 
+    /**
+     * resets the counter when the character begins to sleep
+     */
     resetDurationOfStanding() {
         this.durationOfStanding = 0;
     }
 
+    /**
+     * Function of the jumping height and jumping sound
+     */
     jump() {
         this.speedY = 23;
         jumping_sound.play();

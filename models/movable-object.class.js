@@ -78,7 +78,12 @@ class MovableObject extends DrawableObject{
     }
 
     fillThrowableObjectInventar() {
-        this.throwableObjectsInventar = 10;
+        if (this.throwableObjectsInventar > 5) {
+            this.throwableObjectsInventar = 10;
+        }
+        else {
+            this.throwableObjectsInventar += 5;
+        }
     }
 
     playAnimation(images) {

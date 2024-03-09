@@ -7,7 +7,11 @@ class DrawableObject {
     imageCache = {};
     currentImage = 0;
 
-
+    /**
+     * loads the image for the object
+     * 
+     * @param {string} path - file path the image
+     */
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -38,7 +42,7 @@ class DrawableObject {
     
     /**
      * 
-     * @param {Array} arr - ['img/image1.png',...] 
+     * @param {Array} arr - array with the images of the object
      */
     loadImages(arr) {
         arr.forEach((path) => {

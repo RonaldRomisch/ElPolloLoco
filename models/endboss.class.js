@@ -55,6 +55,9 @@ class Endboss extends MovableObject {
     }
 
 
+    /**
+     * animates the endboss with sound, movement and end
+     */
     animate() {
 
         setInterval(() => {
@@ -88,10 +91,16 @@ class Endboss extends MovableObject {
         }, 3000);
     }
 
+    /**
+     * Endboss moves left
+     */
     endbossMoveLeft() {
         this.x -= 20;
     }
 
+    /**
+     * Jump height for the endboss
+     */
     jumpSequence() {
         this.speedY = 20;
     }

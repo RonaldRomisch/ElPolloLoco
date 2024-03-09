@@ -9,12 +9,18 @@ const rightWalkingElement = document.getElementById('right-key-border');
 const throwingClickElement = document.getElementById('d-key-id');
 const jumpingClickElement = document.getElementById('space-key-id');
 
+/**
+ * This function adds the game canvas to the site
+ */
 function getHTMLCanvas() {
     document.getElementById('start-screen').innerHTML = `
         <canvas id="canvas" width="720" height="480"></canvas>
     `;
 }
 
+/**
+ * After the game ends the canvas will be changed to the start screen
+ */
 function getBackToStartScreen() {
     document.getElementById('start-screen').innerHTML = `
         <div class="screen-image">
@@ -23,6 +29,9 @@ function getBackToStartScreen() {
     `;
 }
 
+/**
+ * Stops all intervals and uses another function after 2 seconds
+ */
 function stopGame() {
     for (let i = 0; i < 9999; i++) {
         window.clearInterval(i);
@@ -32,6 +41,9 @@ function stopGame() {
     }, 2000);
 }
 
+/**
+ * All sounds in the game will be muted or unmutes all sounds
+ */
 function muteSounds() {
     if (soundOn) {
         soundOn = false;
@@ -48,27 +60,22 @@ function muteSounds() {
     }
 }
 
+/**
+ * Mutes and unmutes all sounds in the game if the world object is active
+ */
 function muteAndMuteStartScreen() {
     if (world) {
         world.muteAndUnmuteAllSounds();
     }
 }
 
-function gameOverScreen() {
-    document.getElementById('start-screen').innerHTML += `
-        <div class="game-over-screen">
-            <div class="endscreen-text">Game Over!</div>
-        </div>
-        <div class="start-button" onclick="init()">Start</div>
-    `;
-}
-
+/**
+ * initlises the canvas and the game objects
+ */
 function init() {
     getHTMLCanvas();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-
-    console.log('My character is', world.character);
 }
 
 document.addEventListener("keydown", (e) => {
@@ -151,17 +158,24 @@ window.addEventListener("pointerout", () => {
 
 window.addEventListener("resize", () => {
     if (screenIsOnLandscapeMode()) {
-        changeButtonsIfScreenChanges();
+        changeButtonsIfScreenIsLandscapeMode();
     }
     else {
-        
+
     }
 });
 
+/**
+ * 
+ * @returns true if the screen is in landscape mode
+ */
 function screenIsOnLandscapeMode() {
     return screen.width < 1000 && screen.height < 800;
 }
 
+/**
+ * The jump and throw buttons will be designed differently in landscape mode
+ */
 function changeButtonsIfScreenIsLandscapeMode() {
     document.getElementById('d-key-id').innerHTML = `
         <img class="bottle-button" src="img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png">
@@ -169,6 +183,9 @@ function changeButtonsIfScreenIsLandscapeMode() {
     document.getElementById('space-key-id').innerHTML = `Jump`;
 }
 
+/**
+ * Design of jump and throw buttons will be chenged back in portrait mode
+ */
 function changeButtonsIfScreenIsPortraitMode() {
     document.getElementById('d-key-id').innerHTML = `D`;
     document.getElementById('space-key-id').innerHTML = `Space`;

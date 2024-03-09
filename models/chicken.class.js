@@ -35,13 +35,22 @@ class Chicken extends MovableObject {
         this.animate();
     }
     
+    /**
+     * Animation function for the enemy chicken
+     */
     animate() {
+        /**
+         * Movement interval
+         */
         setInterval(() => {
             if (!this.dead) {
                 this.moveLeft();
             }
         }, 1000 / 60);
         
+        /**
+         * Interval for animation and sound for hurt or dead chicken
+         */
         let intervalChicken = setInterval(() => {
             if(this.dead == true) {
                 this.playImage(this.IMAGE_DEAD);

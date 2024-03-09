@@ -18,6 +18,12 @@ class Collectable extends DrawableObject {
         'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'
     ];
 
+    /**
+     * 
+     * @param {string} collectable - type of collectable
+     * @param {*} x - position the collectable on the x-axis
+     * @param {*} y - position the collectable on the y-axis
+     */
     constructor(collectable, x, y) {
         super().loadImage(this.returnRightCollectable(collectable));
         this.loadImages(this.IMAGE_COIN);
@@ -27,6 +33,11 @@ class Collectable extends DrawableObject {
         this.height = 100;
     }
 
+    /**
+     * 
+     * @param {string} collectable - type of collectable like coin or bottle
+     * @returns array with the amount of collectable
+     */
     returnRightCollectable(collectable) {
         if(collectable == 'coin') {
             return this.IMAGE_COIN[0];
