@@ -63,7 +63,7 @@ class Endboss extends MovableObject {
                 this.isAlerted = false;
                 setTimeout(() => {
                     console.log('endboss');
-                    console.log(this.dead );
+                    this.healthEndboss = 100;
                     this.dead = true;
                     stopGame();
                 }, 2000);
