@@ -24,6 +24,9 @@ class World {
         this.restartLevelParts();
     }
 
+    /**
+     * With initializing the world object the level object activates all objects which it contains
+     */
     restartLevelParts() {
         for (let i = 0; i < this.level.enemies.length; i++) {
             this.level.enemies[i].animate();
@@ -33,6 +36,9 @@ class World {
         initLevel();
     }
 
+    /**
+     * Mutes and unmutes all sounds
+     */
     muteAndUnmuteAllSounds() {
         if (!soundOn) {
             for (let i = 0; i < sounds_Array.length; i++) {
@@ -46,10 +52,16 @@ class World {
         }
     }
 
+    /**
+     * Sets the world
+     */
     setWorld() {
         this.character.world = this;
     }
 
+    /**
+     * Run function sets an interval with all functions which are running throughout the game
+     */
     run() {
         setInterval(() => {
             this.checkEndbossCollisions();
@@ -71,14 +83,23 @@ class World {
         }, 350);
     }
 
+    /**
+     * Counter with the start of the game
+     */
     timeFromBeginning() {
         this.gameStartTime += 25;
     }
 
+    /**
+     * With the movement of the character the x positions changes, so it will be udated
+     */
     updateXForEndscreen() {
         this.endScreenX = this.character.x - 50;
     }
 
+    /**
+     * The thrown bottle will be animated and the inventory will be updated
+     */
     checkThrowObjects() {
         if (this.keyboard.D && this.character.throwableObjectsInventar > 0) {
             let bottle = new ThrowableObject(this.character.x, this.character.y);
@@ -89,6 +110,9 @@ class World {
         }
     }
 
+    /**
+     * A small chicken will be added to the game after every 8 seconds
+     */
     addSmallChickenToWorld() {
         if (this.gameStartTime > 10000) {
             this.level.enemies.push(new SmallChicken());
@@ -96,6 +120,9 @@ class World {
         }
     }
 
+    /**
+     * Clouds will be added to the game all 8 seconds
+     */
     addCloudsToWorld() {
         if (this.gameStartTime > 10000) {
             this.level.clouds.push(new Cloud(6100));
@@ -103,6 +130,9 @@ class World {
         }
     }
 
+    /**
+     * The collisions with enemies with the condition of the character being above ground and over the enemy are being checked
+     */
     checkEnemyCollisionsJump() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
@@ -114,6 +144,9 @@ class World {
         });
     }
 
+    /**
+     * Collisions with enemies are being checked
+     */
     checkEnemyCollisions() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
@@ -124,17 +157,26 @@ class World {
         });
     }
 
+    /**
+     * Collisions with the endboss are being checked
+     */
     checkEndbossCollisions() {
         if(this.character.isColliding(this.level.endboss[0])) {
             this.characterIsGettingHit();
         }
     }
 
+    /**
+     * If the character is being hit with updating the health and the statusbar
+     */
     characterIsGettingHit() {
         this.character.hit();
         this.statusBarHealth.setPercentage(this.character.energy);
     }
 
+    /**
+     * Checks collisions of the bottle with enemies and updates all aspects
+     */
     checkthrowableObjectCollision() {
         for (let j = 0; j < this.throwableObjects.length; j++) {
             for (let i =  0; i < this.level.enemies.length; i++) {
@@ -146,7 +188,6 @@ class World {
                 if (this.level.endboss[0].isColliding(this.throwableObjects[j]) && this.throwableObjects[j].endbossWasHit == false) {
                     this.level.endboss[0].hitEndboss();
                     this.statusBarEndbossHealth.setPercentageEndboss(this.level.endboss[0].healthEndboss);
-                    console.log(this.level.endboss[0].healthEndboss, this.throwableObjects[j].endbossWasHit);
                     this.throwableObjects[j].endbossWasHit = true;
                     this.throwableObjects[j].enemyWasHit = true;
                     cry_sound.play();
@@ -156,6 +197,9 @@ class World {
         }
     }
 
+    /**
+     * Checks collsions of the character with coins, removes collided the coin and updates the inventory
+     */
     checkCoinCollision() {
         for (let i = 0; i < this.level.coins.length; i++) {
             if (this.character.isColliding(this.level.coins[i])) {
@@ -166,6 +210,9 @@ class World {
         }
     }
 
+    /**
+     * Checks the bottle collision of the character with the bottle which can be collected
+     */
     checkBottleCollisions() {
         for (let i = 0; i < this.level.bottles.length; i++) {
             if (this.character.isColliding(this.level.bottles[i])) {
@@ -176,10 +223,19 @@ class World {
         }
     }
 
+    /**
+     * Removes the object from the game
+     * 
+     * @param {Array} objectArray - array of the removed object
+     * @param {number} indexFromObjectArray - position of the removed object in the array
+     */
     removeObjectFromScreen(objectArray, indexFromObjectArray) {
         objectArray.splice(indexFromObjectArray, 1);
     }
 
+    /**
+     * Function which puts the objects into the canvas and updates itself
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -229,12 +285,22 @@ class World {
         });
     }
 
+    /**
+     * Adds all objects of an array to the world
+     * 
+     * @param {Array} objects - Array with all objects which are added
+     */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
         });
     }
 
+    /**
+     * Adds an object to the game
+     * 
+     * @param {object} mo - Object which will be added to the world
+     */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
@@ -249,6 +315,11 @@ class World {
         }
     }
 
+    /**
+     * Mirrors the image of the object on the y-axis
+     * 
+     * @param {object} mo - object which should be mirrored
+     */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -256,6 +327,11 @@ class World {
         mo.x = mo.x * -1;
     }
 
+    /**
+     * Mirrors the object back to the original image
+     * 
+     * @param {object} mo - object which image gets restored
+     */
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();

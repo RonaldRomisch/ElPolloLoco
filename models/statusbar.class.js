@@ -55,6 +55,9 @@ class StatusBar extends DrawableObject {
         }
     }
 
+    /**
+     * Initializes the Health statusbar with full health
+     */
     healthStatusBar() {
         this.loadImages(this.IMAGES_HEALTH);
         this.setPercentage(100);
@@ -62,12 +65,22 @@ class StatusBar extends DrawableObject {
         this.y = -10;
     }
 
+    /**
+     * Update the statusbar with the current health
+     * 
+     * @param {number} percentage - current health
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.IMAGES_HEALTH[this.resolveImageIndexHealth()];
         this.img = this.imageCache[path];
     }
 
+    /**
+     * Updates the image of the health statusbar
+     * 
+     * @returns - position of the Images array
+     */
     resolveImageIndexHealth() {
         if (this.percentage == 100) {
             return 5;
@@ -84,6 +97,9 @@ class StatusBar extends DrawableObject {
         }
     }
 
+    /**
+     * Intitializes bottle statusbar
+     */
     throwStatusBar() {
         this.loadImages(this.IMAGES_THROW_OBJECTS);
         this.setThrowObjects(0);
@@ -91,12 +107,22 @@ class StatusBar extends DrawableObject {
         this.y = 30;
     }
 
+    /**
+     * Updates number of bottles in the inventory
+     * 
+     * @param {number} numberThrowObjects - number of bottles in the inventory
+     */
     setThrowObjects(numberThrowObjects) {
         this.numberThrowObjects = numberThrowObjects;
         let path = this.IMAGES_THROW_OBJECTS[this.resolveImageIndexThrowObjects()];
         this.img = this.imageCache[path];
     }
 
+    /**
+     * Updates images of bottle statusbar
+     * 
+     * @returns position of the array of the bottle images
+     */
     resolveImageIndexThrowObjects() {
         if (this.numberThrowObjects >= 10) {
             return 5;
@@ -113,6 +139,9 @@ class StatusBar extends DrawableObject {
         }
     }
 
+    /**
+     * Initializes coin statusbar
+     */
     coinStatusBar() {
         this.loadImages(this.IMAGES_COINS);
         this.setCollectedCoins(0);
@@ -120,12 +149,22 @@ class StatusBar extends DrawableObject {
         this.y = 70;
     }
 
+    /**
+     * Updates coin status bar
+     * 
+     * @param {number} coinsCollectedStatusBar - number of coins collected
+     */
     setCollectedCoins(coinsCollectedStatusBar) {
         this.coinsCollectedStatusBar = coinsCollectedStatusBar;
         let path = this.IMAGES_COINS[this.resolveImageIndexCoins()];
         this.img = this.imageCache[path];
     }
 
+    /**
+     * Updates images of coin statusbar
+     * 
+     * @returns position of images array
+     */
     resolveImageIndexCoins() {
         if (this.coinsCollectedStatusBar == 10) {
             return 5;
@@ -142,6 +181,9 @@ class StatusBar extends DrawableObject {
         }
     }
 
+    /**
+     * Initializes the Health statusbar of the endboss with full health
+     */
     healthEndbossStatusBar() {
         this.loadImages(this.IMAGES_ENDBOSS);
         this.setPercentageEndboss(100);
@@ -149,12 +191,22 @@ class StatusBar extends DrawableObject {
         this.y = 410;
     }
 
+    /**
+     * Update the statusbar with the current health of the endboss
+     * 
+     * @param {number} percentage - current health of endboss
+     */
     setPercentageEndboss(percentageEndboss) {
         this.percentageEndboss = percentageEndboss;
         let path = this.IMAGES_ENDBOSS[this.resolveImageIndexHealthEndboss()];
         this.img = this.imageCache[path];
     }
 
+    /**
+     * Updates the image of the health statusbar of the endboss
+     * 
+     * @returns - position of the Images array
+     */
     resolveImageIndexHealthEndboss() {
         if (this.percentageEndboss == 100) {
             return 0;

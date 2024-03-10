@@ -56,7 +56,7 @@ class Endboss extends MovableObject {
 
 
     /**
-     * animates the endboss with sound, movement and end
+     * animates the endboss with sound, movement and endsequence
      */
     animate() {
 
