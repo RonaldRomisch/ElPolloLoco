@@ -278,7 +278,6 @@ class World {
             this.addToMap(new BackgroundObject('img/9_intro_outro_screens/game_over/oh no you lost!.png', 0));
         }
 
-        //draw() wird immer wieder aufgerufen
         let self = this;
         requestAnimationFrame(function() {
             self.draw();//the word "this" is not known in the function requestAnimationFrame

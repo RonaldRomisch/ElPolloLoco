@@ -1,3 +1,6 @@
+/**
+ * New object which can move
+ */
 class MovableObject extends DrawableObject{
     
     speed = 0.15;

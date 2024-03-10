@@ -11,13 +11,6 @@ class Character extends MovableObject{
 
     durationOfStanding = 0;
 
-    /* offset = {
-        top: 130,
-        bottom: -45,
-        left: 40,
-        right: -35
-    } */
-
     offset = {
         top: 120,
         bottom: 10,
@@ -26,7 +19,6 @@ class Character extends MovableObject{
     }
     
     // Uncaught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement provided is in the 'broken' state.
-    // the error came from false image source: 'img/2_character_pepe/2_walk7/W-23.png'
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
