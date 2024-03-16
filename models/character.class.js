@@ -160,14 +160,15 @@ class Character extends MovableObject{
                 this.resetDurationOfStanding();
             } 
             else {
-                
                 this.durationOfStanding += 100;
                 if (this.durationOfStanding > 4000) {
                     this.playAnimation(this.IMAGES_SLEEPING);
                     if (soundOn) {
                         snoring_sound.play();
                     }
-                    snoring_sound.pause();
+                    else {
+                        snoring_sound.pause();
+                    }
                 }
                 else {
                     this.playAnimation(this.IMAGES_STANDING);
