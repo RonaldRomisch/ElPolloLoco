@@ -21,6 +21,9 @@ class DrawableObject {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
+    drawFrame(ctx) {
+
+    }
     
     /**
      * Load all images for the object
