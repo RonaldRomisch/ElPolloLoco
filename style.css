@@ -11,6 +11,28 @@ body {
     display: none;
 }
 
+.footer {
+    margin-top: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(93, 92, 92);
+}
+
+li {
+    list-style: none;
+    margin-right: 10px;
+}
+
+ul {
+    display: flex;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -56,6 +78,10 @@ canvas {
     }
     
     h1 {
+        display: none;
+    }
+
+    .footer {
         display: none;
     }
 }
