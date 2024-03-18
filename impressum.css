@@ -2,6 +2,7 @@ body {
     margin: 0;
     background-color: rgb(255, 207, 117);
     font-family: Arial, Helvetica, sans-serif;
+    display: flex;
 }
 
 .content {
@@ -23,9 +24,26 @@ a {
 
 .get-back-pepe {
     cursor: pointer;
+    display: flex;
+    margin-left: 30px;
 }
 
 .get-back-pepe img {
     height: 150px;
     width: 90px;
+}
+
+.footer {
+    margin-top: 0px;
+    font-size: 15px;
+    margin-top: 90px;
+}
+
+.footer ul {
+    display: flex;
+    list-style: none;
+}
+
+.footer ul li {
+    margin-right: 10px;
 }
