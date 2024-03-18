@@ -1,11 +1,14 @@
 body {
     margin: 0;
     background-color: rgb(255, 207, 117);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
     padding-left: 10vw;
     padding-right: 10vw;
-    padding-top: 10vh;
+    padding-top: 5vh;
     padding-bottom: 10vh;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -17,3 +20,12 @@ a {
     font-family: 'zabras';
     src: url('fonts/zabars.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 } 
+
+.get-back-pepe {
+    cursor: pointer;
+}
+
+.get-back-pepe img {
+    height: 150px;
+    width: 90px;
+}
