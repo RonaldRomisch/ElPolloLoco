@@ -4,7 +4,12 @@ body {
     align-items: center;
     font-family: 'zabras', Arial, Helvetica, sans-serif;
     background-image: url('img/desert-5385998_1280.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     margin: 0;
+    height: 100vh;
+    width: 100vw;
 }
 
 .d-none {

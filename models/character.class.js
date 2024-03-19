@@ -1,6 +1,6 @@
 class Character extends MovableObject{
     
-    y = -45;
+    y = 140;
     x = 50;
 
     showStatusBarEndboss = false;
