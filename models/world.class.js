@@ -237,15 +237,26 @@ class World {
      * Function which puts the objects into the canvas and updates itself
      */
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.drawBackgroundAndClouds();
+        this.drawStatusBars();
+        this.drawEndbossStatusBar();
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottles);
+        this.addToMap(this.character);
+        this.drawEnemies();
+        this.ctx.translate(-this.camera_x, 0);
+        this.drawEndscreen();
+        let self = this;
+        requestAnimationFrame(function() {
+            self.draw();//the word "this" is not known in the function requestAnimationFrame
+        });
+    }
 
-        this.ctx.translate(this.camera_x, 0); // Verschiebung der Kamera nach links
-        this.addObjectsToMap(this.level.backgroundObjects);
-
-        this.addObjectsToMap(this.level.clouds);
-        
+    /**
+     * Draws all statusbars except for endboss
+     */
+    drawStatusBars() {
         this.ctx.translate(-this.camera_x, 0); 
-        // -------- Space for fixed object
         this.addToMap(this.statusBarHealth);
         this.ctx.translate(this.camera_x, 0);
         this.ctx.translate(-this.camera_x, 0); 
@@ -254,34 +265,48 @@ class World {
         this.ctx.translate(-this.camera_x, 0); 
         this.addToMap(this.statusBarCollectedCoins);
         this.ctx.translate(this.camera_x, 0);
+    }
 
+    /**
+     * Draws all enemies
+     */
+    drawEnemies() {
+        this.addToMap(this.level.endboss[0]);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.throwableObjects);
+    }
+
+    /**
+     * Draws Background and the clouds
+     */
+    drawBackgroundAndClouds() {
+        this.ctx.translate(this.camera_x, 0); // Verschiebung der Kamera nach links
+        this.addObjectsToMap(this.level.backgroundObjects);
+
+        this.addObjectsToMap(this.level.clouds);
+    }
+
+    /**
+     * draws Endboss statusbar if the character gets to a certain point on the x-axis
+     */
+    drawEndbossStatusBar() {
         if (this.character.showStatusBarEndboss) {
             this.ctx.translate(-this.camera_x, 0); 
             this.addToMap(this.statusBarEndbossHealth);
             this.ctx.translate(this.camera_x, 0);
         }
-        
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.bottles);
+    }
 
-        this.addToMap(this.character);
-        this.addToMap(this.level.endboss[0]);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.throwableObjects);
-
-        this.ctx.translate(-this.camera_x, 0);
-
+    /**
+     * Draws endscreen which depends if the character or the endboss dies
+     */
+    drawEndscreen() {
         if (this.level.endboss[0].dead) {
             this.addToMap(new BackgroundObject('img/9_intro_outro_screens/game_over/game over.png', 0));
         }
         if (this.character.dead) {
             this.addToMap(new BackgroundObject('img/9_intro_outro_screens/game_over/oh no you lost!.png', 0));
         }
-
-        let self = this;
-        requestAnimationFrame(function() {
-            self.draw();//the word "this" is not known in the function requestAnimationFrame
-        });
     }
 
     /**
