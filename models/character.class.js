@@ -144,6 +144,7 @@ class Character extends MovableObject{
                 setTimeout(() => {
                     this.dead = true;
                     stopGame();
+                    muteSounds();
                 }, 600);
             } else if(this.isHurt()) {
                 setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);
