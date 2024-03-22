@@ -65,10 +65,12 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.IMAGES_DEAD);
                 this.isAlerted = false;
                 setTimeout(() => {
-                    console.log('endboss');
                     this.healthEndboss = 100;
                     this.dead = true;
                     stopGame();
+                    if (soundOn) {
+                        muteSounds();
+                    }
                 }, 2000);
             } 
             else if (this.isWalking) {
