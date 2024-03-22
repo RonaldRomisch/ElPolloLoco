@@ -197,7 +197,9 @@ class Character extends MovableObject{
         setTimeout(() => {
             this.dead = true;
             stopGame();
-            muteSounds();
+            if (soundOn) {
+                muteSounds();
+            }
         }, 600);
     }
 
