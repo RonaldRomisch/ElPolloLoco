@@ -115,6 +115,9 @@ class Character extends MovableObject{
         }, 100);   
     }
 
+    /**
+     * Contains all intervals for movement
+     */
     movementInterval() {
         walking_sound.pause();
         this.movementRight();
@@ -127,6 +130,9 @@ class Character extends MovableObject{
         this.world.camera_x = -this.x + 100;
     }
 
+    /**
+     * Interaction functions if character collides with enemy and idling interval
+     */
     interactionInterval() {
         if (this.isDead()) {
             this.deadAnimation();
@@ -142,6 +148,9 @@ class Character extends MovableObject{
         }
     }
 
+    /**
+     * Animations and aspects of moving in the right direction
+     */
     movementRight() {
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.moveRight();
@@ -155,6 +164,9 @@ class Character extends MovableObject{
         }
     }
 
+    /**
+     * Animations and aspects of moving in the left direction
+     */
     movementLeft() {
         if (this.world.keyboard.LEFT && this.x > -500) {
             this.moveLeft();
@@ -168,12 +180,18 @@ class Character extends MovableObject{
         }
     }
 
+    /**
+     * acitvates the jump function if space is pressed and it is above ground
+     */
     jumpActivation() {
         if (this.world.keyboard.SPACE && !this.isAboveGround()) {
             this.jump();
         }
     }
 
+    /**
+     * Function for the case the character dies
+     */
     deadAnimation() {
         this.playAnimation(this.IMAGES_DEAD);
         setTimeout(() => {
@@ -183,6 +201,9 @@ class Character extends MovableObject{
         }, 600);
     }
 
+    /**
+     * Animates all aspects if the enemy touches the character
+     */
     hurtAnimation() {
         setTimeout(this.playAnimation(this.IMAGES_HURT), 1000);
         this.resetDurationOfStanding();
@@ -191,16 +212,25 @@ class Character extends MovableObject{
         }
     }
 
+    /**
+     * Animates the jump function and reset the counter for idling
+     */
     jumpAnimation() {
         this.playAnimation(this.IMAGES_JUMPING)
         this.resetDurationOfStanding();
     }
 
+    /**
+     * Walking animation and resets the counter for the idling function
+     */
     walkAnimation() {
         this.playAnimation(this.IMAGES_WALKING);
         this.resetDurationOfStanding();
     }
 
+    /**
+     * Animates when the character stands loong enough through the rest counter
+     */
     idlingAnimation() {
         this.durationOfStanding += 100;
         if (this.durationOfStanding > 4000) {
