@@ -38,7 +38,7 @@ ul {
     display: flex;
 }
 
-.cursor-pointer {
+.interaction-button {
     cursor: pointer;
 }
 
@@ -405,5 +405,11 @@ canvas {
 
     .switch-screen img {
         animation: turn 2s infinite linear;
+    }
+}
+
+@media (min-width: 760px) {
+    .interaction-button {
+        display: none;
     }
 }

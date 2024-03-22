@@ -136,7 +136,7 @@ class World {
     checkEnemyCollisionsJump() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
-                if (this.character.isAboveGround() && enemy['dead'] == false) {
+                if (this.character.isAboveGround() && enemy['dead'] == false && this.character.speedY < 0) {
                     this.character.jump();
                     enemy['dead'] = true;
                 }
